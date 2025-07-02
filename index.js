@@ -79,7 +79,7 @@ async function connectToWA() {
           const message = `🗯️ *WELCOME TO ${groupName}, @${number}!* ❤‍🩹\n\nWe’re delighted to have you join our community.\n\n✅ Please take a moment to read the group rules and feel free to introduce yourself.\n\n💎 *Let’s build a friendly and respectful environment together!*`;
 
           await conn.sendMessage(groupId, {
-            image: { url: 'https://github.com/DANUWA-MD/DANUWA-BOT/blob/main/images/welcome.jpg?raw=true' },
+            image: { url: 'https://github.com/rush1617/RUSH-TD/blob/main/images/welcome.jpg?raw=true' },
             caption: message,
             mentions: [userId]
           });
