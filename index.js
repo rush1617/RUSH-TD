@@ -136,7 +136,7 @@ async function connectToWA() {
 *DISSANAYAKA* 🔥
       `;
       conn.sendMessage(ownerNumber[0] + "@s.whatsapp.net", {
-        image: { url: '' },
+        image: { url: 'https://github.com/rush1617/RUSH-TD/blob/main/images/Rush-TD%20(1).png?raw=true' },
         caption: up
       });
     }
