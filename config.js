@@ -13,7 +13,7 @@ function convertToBool(text, fault = 'true') {
 
 const defaultConfig = {
   SESSION_ID: "", // Put your session id here
-  ALIVE_IMG: "https://github.com/rameshbot1617/RUSH-TD/blob/main/images/Alive.png?raw=true",
+  ALIVE_IMG: "https://github.com/rush1617/RUSH-TD/blob/main/images/Alive.png?raw=true",
   ALIVE_MSG: "*Hello👋 RUSH-TD Is Alive Now😍*", // Change alive msg from here
   OPENAI_API_KEY: "",// Add OPENAI API key here
   GEMINI_API_KEY: "", // Add Gemini API key here
