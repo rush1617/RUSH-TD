@@ -136,7 +136,7 @@ async function connectToWA() {
 *DISSANAYAKA* 🔥
       `;
       conn.sendMessage(ownerNumber[0] + "@s.whatsapp.net", {
-        image: { url: config.ALIVE_IMG },
+        image: { url: '' },
         caption: up
       });
     }
