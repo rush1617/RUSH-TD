@@ -92,7 +92,7 @@ async function connectToWA() {
           const message = `👋 *Goodbye @${number}!* 👋\n\nThank you for being part of ${groupName}. *We wish you all the best!❤‍🩹*`;
 
           await conn.sendMessage(groupId, {
-            image: { url: 'https://github.com/DANUWA-MD/DANUWA-BOT/blob/main/images/leave.jpg?raw=true' },
+            image: { url: 'https://github.com/rush1617/RUSH-TD/blob/main/images/leave.jpg?raw=true' },
             caption: message,
             mentions: [userId]
           });
