@@ -35,7 +35,6 @@ async (conn, mek, m, {
 │ 🔹 *Ping:* ${ping} ms
 │ 🔹 *Uptime:* ${uptime}
 │ 🔹 *Platform:* ${platform}
-│ 🔹 *CPU:* ${cpu.split('@')[0].trim()}
 │ 🔹 *Owner:* ${config.OWNER_NAME || 'RAMESH DISSANAYAKA'}
 │ 🔹 *Version:* ${config.VERSION || '1.0.0'}
 │
