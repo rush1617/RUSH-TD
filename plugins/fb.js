@@ -4,14 +4,14 @@ const getFbVideoInfo = require("@xaviabot/fb-downloader");
 cmd(
   {
     pattern: "fb",
-    alias: ["facebook"],
+    alias: ["fb", "facebook"],
     react: "✅",
-    desc: "Download Facebook Video",
+    desc: "✅*FACEBOOK* = Type: .fb",
     category: "download",
     filename: __filename,
   },
   async (
-    danuwa,
+    rush,
     mek,
     m,
     {
@@ -58,23 +58,30 @@ cmd(
       const qualityText = hd ? "HD" : "SD";
 
       const desc = `
-Your fb video
+          🌟 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 🌟    
+════════════════════════     
+🔮  R U S H - T D  🔮  
+      ✅ _FACEBOOK VIDEO DOWNLOADER_ ✅  
+════════════════════════   
+
+🚀 Pow. By *RAMESH DISSANAYAKA* 🔥
+─────────────────────────
 👻 *Title*: ${title || "Unknown"}
 👻 *Quality*: ${qualityText}
 `;
 
-      await danuwa.sendMessage(
+      await rush.sendMessage(
         from,
         {
           image: {
-            url: "https://github.com/DANUWA-MD/DANUWA-MD/blob/main/images/fbdownloader.png?raw=true",
+            url: "https://github.com/rush1617/RUSH-TD/blob/main/images/fbdownloader.png?raw=true",
           },
           caption: desc,
         },
         { quoted: mek }
       );
 
-      await danuwa.sendMessage(
+      await rush.sendMessage(
         from,
         {
           video: { url: bestQualityUrl },
@@ -83,7 +90,7 @@ Your fb video
         { quoted: mek }
       );
 
-      return reply("Thank you for using DANUWA-MD");
+      return reply("✅ *Thank you for using RUSH - TD!* 💖");
     } catch (e) {
       console.error(e);
       reply(`*Error:* ${e.message || e}`);
