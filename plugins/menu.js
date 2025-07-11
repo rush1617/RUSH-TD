@@ -26,13 +26,13 @@ cmd(
         if (!categories[cat]) categories[cat] = [];
         categories[cat].push({
           pattern: cmdData.pattern,
-          desc: cmdData.desc || "No description"
+          desc: cmdData.desc || "╭━━ ⚡ RUSH-TD ⚡ ━━╮
+┃  💠 Ｍ Ａ Ｉ Ｎ - Ｍ Ｅ Ｎ Ｕ
+┃━━━━━━━━━━━━━━━━━━━━━━✦"
         });
       }
 
-      let menuText = "╭━━ ⚡ RUSH-TD⚡ ━━╮
-┃  💠 Ｍ Ａ Ｉ Ｎ - Ｍ Ｅ Ｎ Ｕ
-┃━━━━━━━━━━━━━━━━━━━━━━✦";
+      let menuText = "📋 *Available Commands:*\n";
 
       for (const [cat, cmds] of Object.entries(categories)) {
         menuText += `\n📂 *${cat.toUpperCase()}*\n`;
