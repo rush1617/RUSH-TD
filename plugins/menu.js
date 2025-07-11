@@ -4,7 +4,9 @@ cmd(
   {
     pattern: "menu",
     react: "⚙️",
-    desc: "Displays all available commands",
+    desc: "╭━━ ⚡ R U S H - T D⚡ ━━╮
+┃  💠 Ｍ Ａ Ｉ Ｎ - Ｍ Ｅ Ｎ Ｕ
+┃━━━━━━━━━━━━━━━━━━━━━━✦",
     category: "main",
     filename: __filename,
   },
