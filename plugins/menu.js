@@ -4,7 +4,7 @@ cmd(
   {
     pattern: "menu",
     react: "⚙️",
-    desc: "Display all avaible commands",
+    desc: "Displays all available commands",
     category: "main",
     filename: __filename,
   },
