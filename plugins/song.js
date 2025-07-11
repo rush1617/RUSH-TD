@@ -5,8 +5,9 @@ const { ytmp3 } = require("@vreden/youtube_scraper");
 cmd(
   {
     pattern: "song",
+    alias: ["song"],
     react: "🎶",
-    desc: "Download Song",
+    desc: "🎶*SONG* = Type: .song",
     category: "download",
     filename: __filename,
   },
@@ -47,15 +48,25 @@ cmd(
       const url = data.url;
 
       let desc = `
-Song downloader
+🌟 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 🌟    
+════════════════════════     
+🔮  R U S H - T D  🔮  
+      🎧 𝙎𝙊𝙉𝙂 𝘿𝙊𝙒𝙉𝙇𝙊𝘼𝘿𝙀𝙍 🎧  
+════════════════════════   
+
+🎼 Let the rhythm guide you... 🎼
+🚀 Pow. By RAMESH DISSANAYAKA 🔥
+─────────────────────────
 🎬 *Title:* ${data.title}
 ⏱️ *Duration:* ${data.timestamp}
 📅 *Uploaded:* ${data.ago}
 👀 *Views:* ${data.views.toLocaleString()}
 🔗 *Watch Here:* ${data.url}
+─────────────────────────
+🎼 Made with ❤️ by RAMESH DISSANAYAKA💫
 `;
 
-      await danuwa.sendMessage(
+      await rush.sendMessage(
         from,
         { image: { url: data.thumbnail }, caption: desc },
         { quoted: mek }
@@ -74,7 +85,7 @@ Song downloader
         return reply("⏳ *Sorry, audio files longer than 30 minutes are not supported.*");
       }
 
-      await danuwa.sendMessage(
+      await rush.sendMessage(
         from,
         {
           audio: { url: songData.download.url },
@@ -83,18 +94,19 @@ Song downloader
         { quoted: mek }
       );
 
-      await danuwa.sendMessage(
+      await rush.sendMessage(
         from,
         {
           document: { url: songData.download.url },
           mimetype: "audio/mpeg",
           fileName: `${data.title}.mp3`,
-          caption: "🎶 *Your song is ready to be played!*",
+          caption: "🎶 *Your song is ready to be played!* 
+🎼 Made with ❤️ by *RAMESH DISSANAYAKA💫*",
         },
         { quoted: mek }
       );
 
-      return reply("✅ Thank you");
+      return reply("✅ *Thank you for using RUSH-TD! Enjoy your music* 🎧💖");
     } catch (e) {
       console.log(e);
       reply(`❌ *Error:* ${e.message} 😞`);
