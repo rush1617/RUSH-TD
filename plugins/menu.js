@@ -4,9 +4,7 @@ cmd(
   {
     pattern: "menu",
     react: "⚙️",
-    desc: "╭━━ ⚡ R U S H - T D⚡ ━━╮
-┃  💠 Ｍ Ａ Ｉ Ｎ - Ｍ Ｅ Ｎ Ｕ
-┃━━━━━━━━━━━━━━━━━━━━━━✦",
+    desc: "Display all avaible commands",
     category: "main",
     filename: __filename,
   },
@@ -32,7 +30,9 @@ cmd(
         });
       }
 
-      let menuText = "📋 *Available Commands:*\n";
+      let menuText = "╭━━ ⚡ RUSH-TD⚡ ━━╮
+┃  💠 Ｍ Ａ Ｉ Ｎ - Ｍ Ｅ Ｎ Ｕ
+┃━━━━━━━━━━━━━━━━━━━━━━✦";
 
       for (const [cat, cmds] of Object.entries(categories)) {
         menuText += `\n📂 *${cat.toUpperCase()}*\n`;
