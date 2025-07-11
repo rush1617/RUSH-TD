@@ -26,9 +26,7 @@ cmd(
         if (!categories[cat]) categories[cat] = [];
         categories[cat].push({
           pattern: cmdData.pattern,
-          desc: cmdData.desc || "╭━━ ⚡ RUSH-TD ⚡ ━━╮
-┃  💠 Ｍ Ａ Ｉ Ｎ - Ｍ Ｅ Ｎ Ｕ
-┃━━━━━━━━━━━━━━━━━━━━━━✦"
+          desc: cmdData.desc || "No Description"
         });
       }
 
