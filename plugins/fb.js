@@ -6,7 +6,7 @@ cmd(
     pattern: "fb",
     alias: ["fb", "facebook"],
     react: "✅",
-    desc: "✅*FACEBOOK* = Type: .fb",
+    desc: "╰➤ 🔸 .fb — Download Facebook Video",
     category: "download",
     filename: __filename,
   },
