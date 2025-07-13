@@ -6,7 +6,7 @@ cmd(
     pattern: "yts",
     alias: ["yts", "youtubesearch"],
     react: "🔎",
-    desc: "🔎*YOU TUBE SEARCH* = Type: .yts",
+    desc: "╰➤ 🔸 .yts — You Tube Search",
     category: "search",
     filename: __filename,
   },
@@ -41,7 +41,7 @@ cmd(
  🌟 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 🌟    
 ════════════════════════     
 🔮  R U S H  -  T D  🔮  
-          📍 YOUTUBE 𝙎𝙀𝘼𝙍𝘾𝙃 📍  
+          📍 YOUTUBE SEARCH 📍  
 ════════════════════════  
 🔎 *Query*: ${q}
 ${formattedResults}
