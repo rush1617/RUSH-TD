@@ -72,7 +72,7 @@ cmd(
         { quoted: mek }
       );
 
-      const quality = "192";
+      const quality = "256";
       const songData = await ytmp3(url, quality);
 
       let durationParts = data.timestamp.split(":").map(Number);
