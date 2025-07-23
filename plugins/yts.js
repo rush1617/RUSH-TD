@@ -6,7 +6,7 @@ cmd(
     pattern: "yts",
     alias: ["yts", "youtubesearch"],
     react: "🔎",
-    desc: "╰➤ 🔸 .yts — You Tube Search",
+    desc: "You Tube Search",
     category: "search",
     filename: __filename,
   },
