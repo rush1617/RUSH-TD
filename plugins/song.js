@@ -7,7 +7,7 @@ cmd(
     pattern: "song",
     alias: ["song"],
     react: "🎶",
-    desc: "╰➤ 🔸 .song — Download Song",
+    desc: "Download Song",
     category: "download",
     filename: __filename,
   },
