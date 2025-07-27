@@ -12,6 +12,7 @@ const formatUptime = (seconds) => {
 };
 
 cmd({
+     pattern: "alive",
     react: "👀",
     filename: __filename
 },
