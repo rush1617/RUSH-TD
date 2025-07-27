@@ -13,6 +13,7 @@ const formatUptime = (seconds) => {
 
 cmd({
     pattern: "alive",
+    desc: "Check if the bot is online and functioning.",
     category: "main",
     filename: __filename
 },
