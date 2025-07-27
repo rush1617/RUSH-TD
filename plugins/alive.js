@@ -14,8 +14,6 @@ const formatUptime = (seconds) => {
 cmd({
     pattern: "alive",
     react: "👀",
-    desc: "Check if the bot is online and functioning.",
-    category: "main",
     filename: __filename
 },
 async (conn, mek, m, {
