@@ -4,8 +4,6 @@ cmd(
   {
     pattern: "menu",
     react: "⚙️",
-    desc: "Show all submenus",
-    category: "main",
     filename: __filename,
   },
   async (
