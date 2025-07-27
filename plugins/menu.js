@@ -2,7 +2,6 @@ const { cmd, commands } = require("../command");
 
 cmd(
   {
-    pattern: "menu",
     react: "⚙️",
     filename: __filename,
   },
