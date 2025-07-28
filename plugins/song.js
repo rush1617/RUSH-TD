@@ -93,4 +93,4 @@ cmd(
       }
 
       // Duration safe parse
-      let durationparts`
+      let durationparts = duration.split(':');
