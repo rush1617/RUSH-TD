@@ -44,71 +44,54 @@ cmd(
       if (!q) return reply("❌ *Please provide a song name or YouTube link*");
 
       const search = await yts(q);
+      if (!search || !search.videos || search.videos.length === 0) {
+        return reply("❌ *No results found for your query.*");
+      }
       const data = search.videos[0];
+      if (!data || !data.url) {
+        return reply("❌ *Couldn't get song details. Try another one.*");
+      }
       const url = data.url;
+
+      // Handle missing details safely
+      const title = data.title || "Unknown";
+      const timestamp = data.timestamp || "00:00";
+      const ago = data.ago || "Unknown";
+      const views = typeof data.views === "number" ? data.views.toLocaleString() : "Unknown";
+      const thumbnail = data.thumbnail || "";
 
       let desc = `
 🌟 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 🌟    
 ════════════════════════     
 🔮  R U S H - T D  🔮  
-      🎧 𝙎𝙊𝙉𝙂 𝘿𝙊𝙒𝙉𝙇𝙊𝘼𝘿𝙀𝙍 🎧  
+      🎧 𝙎𝙊𝙉𝙂 𝘿𝙊𝙒𝙉𝙇𝙾𝘼𝘿𝙀𝙍 🎧  
 ════════════════════════   
 
 🎼 Let the rhythm guide you... 🎼
 🚀 Pow. By RAMESH DISSANAYAKA 🔥
 ─────────────────────────
-🎬 *Title:* ${data.title}
-⏱️ *Duration:* ${data.timestamp}
-📅 *Uploaded:* ${data.ago}
-👀 *Views:* ${data.views.toLocaleString()}
-🔗 *Watch Here:* ${data.url}
+🎬 *Title:* ${title}
+⏱️ *Duration:* ${timestamp}
+📅 *Uploaded:* ${ago}
+👀 *Views:* ${views}
+🔗 *Watch Here:* ${url}
 ─────────────────────────
 🎼 Made with ❤️ by RAMESH DISSANAYAKA💫
 `;
 
       await rush.sendMessage(
         from,
-        { image: { url: data.thumbnail }, caption: desc },
+        { image: { url: thumbnail }, caption: desc },
         { quoted: mek }
       );
 
       const quality = "256";
       const songData = await ytmp3(url, quality);
 
-      let durationParts = data.timestamp.split(":").map(Number);
-      let totalSeconds =
-        durationParts.length === 3
-          ? durationParts[0] * 3600 + durationParts[1] * 60 + durationParts[2]
-          : durationParts[0] * 60 + durationParts[1];
-
-      if (totalSeconds > 1800) {
-        return reply("⏳ *Sorry, audio files longer than 30 minutes are not supported.*");
+      if (!songData || !songData.download || !songData.download.url) {
+        return reply("❌ *Failed to download the song. Please try another one.*");
       }
 
-      await rush.sendMessage(
-        from,
-        {
-          audio: { url: songData.download.url },
-          mimetype: "audio/mpeg",
-        },
-        { quoted: mek }
-      );
-
-      await rush.sendMessage(
-        from,
-        {
-          document: { url: songData.download.url },
-          mimetype: "audio/mpeg",
-          fileName: `${data.title}.mp3`,
-          caption: "🎶 *Your song is ready to be played!* ",
-        },
-        { quoted: mek }
-      );
-
-      return reply("✅ *Thank you for using RUSH-TD! Enjoy your music* 🎧💖");
-    } catch (e) {
-      console.log(e);
-      reply(`❌ *Error:* ${e.message} 😞`);
-    }
-  }
-);
+      // Duration safe parse
+      let durationParts`
+
