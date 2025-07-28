@@ -93,4 +93,3 @@ cmd(
       }
 
       // Duration safe parse
-      let durationParts
