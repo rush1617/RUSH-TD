@@ -11,7 +11,7 @@ cmd(
       const menuText = `
 ╭━━ ⚡ *RUSH-TD*⚡ ━━╮
 ┃  💠 *Ｍ Ａ Ｉ Ｎ - Ｍ Ｅ Ｎ Ｕ*
-┃━━━━━━━━━━━━━━━━━━━━━━✦
+┃━━━━━━━━━━━━━━━━━━━━━✦
 ╰➤ 📥 *DOWNLOAD* — Type: .download
 ╰➤ 🎨 *LOGO* — Type: .logo
 ╰➤ 👥 *GROUP* — Type: .group
@@ -25,9 +25,9 @@ cmd(
 ╰➤ 🏠 *MAIN* — Type: .main
 ╰➤ 👑 *OWNER* — Type: .owner
 ╰➤ 📂 *OTHER* — Type: .other
-┃━━━━━━━━━━━━━━━━━━━━━━✦
+┃━━━━━━━━━━━━━━━━━━━━━✦
 ┃ ⚙️ Made with ❤️ by
-╰─🔥 *_RAMESH DISSANAYAKA_* 🔥─╯
+╰─🔥 *_RAMESH DISSANAYAKA_* 🔥
       `.trim();
 
       // Photo eke path eka / url eka denna
