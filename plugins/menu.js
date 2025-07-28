@@ -1,43 +1,43 @@
-const { cmd, commands } = require("../command");
+const { cmd } = require("../command");
 
 cmd(
   {
-     pattern: "menu",
+    pattern: "menu",
     react: "⚙️",
     filename: __filename,
   },
-  async (
-    rush,
-    mek,
-    m,
-    {
-      from,
-      reply
-    }
-  ) => {
+  async (rush, mek, m, { from, reply }) => {
     try {
-      const categories = {};
+      const menuText = `
+╭━━ ⚡ *RUSH-TD*⚡ ━━╮
+┃  💠 *Ｍ Ａ Ｉ Ｎ - Ｍ Ｅ Ｎ Ｕ*
+┃━━━━━━━━━━━━━━━━━━━━━━✦
+╰➤ 📥 *DOWNLOAD* — Type: .download
+╰➤ 🎨 *LOGO* — Type: .logo
+╰➤ 👥 *GROUP* — Type: .group
+╰➤ 🛠️ *UTILITIES* — Type: .utilities
+╰➤ 🧰 *TOOLS* — Type: .tools
+╰➤ 🤖 *AI* — Type: .ai
+╰➤ 🔄 *CONVERT* — Type: .convert
+╰➤ 🍥 *ANIME* — Type: .anime
+╰➤ 🔍 *SEARCH* — Type: .search
+╰➤ 🎉 *FUN* — Type: .fun
+╰➤ 🏠 *MAIN* — Type: .main
+╰➤ 👑 *OWNER* — Type: .owner
+╰➤ 📂 *OTHER* — Type: .other
+┃━━━━━━━━━━━━━━━━━━━━━━✦
+┃ ⚙️ Made with ❤️ by
+╰─🔥 *_RAMESH DISSANAYAKA_* 🔥─╯
+      `.trim();
 
-      for (let cmdName in commands) {
-        const cmdData = commands[cmdName];
-        const cat = cmdData.category?.toLowerCase() || "other";
-        if (!categories[cat]) categories[cat] = [];
-        categories[cat].push({
-          pattern: cmdData.pattern,
-          desc: cmdData.desc || "No Description"
-        });
-      }
+      // Photo eke path eka / url eka denna
+      const imageUrl = "https://raw.githubusercontent.com/rush1617/RUSH-TD/refs/heads/main/images/main-menu.png"; // <-- Replace with your image URL
 
-      let menuText = "╭━━ ⚡ *RUSH－TＤ*⚡ ━━╮┃  💠 *Ｍ Ａ Ｉ Ｎ - Ｍ Ｅ Ｎ Ｕ*┃━━━━━━━━━━━━━━━━━━━━━━✦\n";
+      await rush.sendMessage(from, {
+        image: { url: imageUrl },
+        caption: menuText,
+      }, { quoted: mek });
 
-      for (const [cat, cmds] of Object.entries(categories)) {
-        menuText += `\n📂 *${cat.toUpperCase()}*\n`;
-        cmds.forEach(c => {
-          menuText += `- .${c.pattern} : ${c.desc}\n`;
-        });
-      }
-
-      await reply(menuText.trim());
     } catch (err) {
       console.error(err);
       reply("❌ Error generating menu.");
