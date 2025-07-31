@@ -88,24 +88,20 @@ async function connectToWA() {
       console.log('✅ RUSH-TD connected to WhatsApp');
 
       const up = `
-╔═══◉ *🟢 STATUS: ONLINE* ◉═══╗
-║  𝙷𝚎𝚢 𝙳𝚞𝚍𝚎, 𝙸’𝚖 𝚑𝚎𝚛𝚎 𝚝𝚘 𝚑𝚎𝚕𝚙 𝚢𝚘𝚞.  
-║  𝙰𝚜𝚔 𝚖𝚎 𝚊𝚗𝚢𝚝𝚑𝚒𝚗𝚐! 💬
-╚══════════════════════╝
-
-🧾 *PROFILE INFORMATION*
-┌──────── ⋆⋅☆⋅⋆ ────────┐
-│ 🔐 *Owner:* Ramesh Dissanayaka  
-│ 👤 *Botname:* RUSH-TD  
-│ ⚡ *Bio:* Powerful WhatsApp Bot  
-│ 🧩 *Role:* Wizard Lord 🧙‍♂️  
-└──────── ⋆⋅☆⋅⋆ ────────┘
-
-🚀 Powered By *RAMESH*
-*DISSANAYAKA* 🔥
+╭─────── ⭓ ⭓ ⭓  ─────────╮
+│         🧿 SYSTEM ONLINE 🧿        │
+╰──────────────⟡───────╯
+│ 👋 *Hi* there, I'm Alive Now!
+│ 🍁 *PREFIX:* "."
+│ ⚡ *BOT NAME:* RUSH-TD
+│ 🔋 *PLATFORM:* linux
+│ 🧩 *VERSION:* 1.0.0
+╰───────────────⬣
+*👑 O  W  N  E  R*
+🔥 RAMESH DISSANAYAKA 🔥
        `;
       rush.sendMessage(ownerNumber[0] + "@s.whatsapp.net", {
-        image: { url: 'https://github.com/rush1617/RUSH-TD/blob/main/images/Alive.png?raw=true' },
+        image: { url: 'https://raw.githubusercontent.com/rush1617/RUSH-TD/refs/heads/main/images/RUSH-TD_Alive.png' },
         caption: up
       });
 
