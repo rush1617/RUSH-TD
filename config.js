@@ -22,8 +22,8 @@ module.exports = {
 
 🚀 Powered By *RAMESH*
 *DISSANAYAKA* 🔥`, // Change alive msg from here
-  BOT_OWNER: "94726892483", // Replace your bot owner number here with 94(country code)
-  ownerNumber: ["94726892483"], // Replace your bot owner number here (same as bot owner number)
+  BOT_OWNER: "94775938007", // Replace your bot owner number here with 94(country code)
+  ownerNumber: ["94775938007"], // Replace your bot owner number here (same as bot owner number)
 
 
     };
