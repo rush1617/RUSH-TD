@@ -41,7 +41,7 @@ cmd(
         from,
         {
           image: {
-            url: "https://github.com/DANUWA-MD/DANUWA-MD/blob/main/images/DANUWA-MD.png?raw=true",
+            url: "https://github.com/rush1617/RUSH-TD/blob/main/images/Wallpaper%20downloader.png?raw=true",
           },
           caption: header,
         },
@@ -64,7 +64,7 @@ cmd(
         );
       }
 
-      return reply("*🌟 Enjoy your HD wallpapers! Thank you for using DANUWA-MD.*");
+      return reply("*🌟 Enjoy your HD wallpapers! Thank you for using RUSH-TD.*");
     } catch (e) {
       console.error(e);
       reply(`*❌ Error:* ${e.message || e}`);
