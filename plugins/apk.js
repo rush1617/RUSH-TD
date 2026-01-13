@@ -5,7 +5,7 @@ const axios = require("axios");
 cmd(
   {
     pattern: "apk",
-    alias: ["android", "af"],
+    alias: ["apk"],
     react: "📍",
     desc: "Download your favourite apk",
     category: "download",
