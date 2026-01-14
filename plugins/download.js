@@ -67,10 +67,8 @@ cmd(
       await rush.sendMessage(
         from,
         {
-          document: { url: songData.download.url },
+          audio: { url: data.url },
           mimetype: "audio/mpeg",
-          fileName: `${data.title}.mp3`,
-          caption: "🎶 *Your song is ready to be played!* ",
         },
         { quoted: mek }
       );
