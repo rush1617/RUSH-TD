@@ -195,7 +195,7 @@ cmd(
 ⏱ Duration: ${data.runtime}
         
         ──────────────────
-🪬 Made with ❤️ by RAMESH DISSANAYAKA💫;
+🪬 Made with ❤️ by RAMESH DISSANAYAKA💫`;
 
       await rush.sendMessage(
         from,
