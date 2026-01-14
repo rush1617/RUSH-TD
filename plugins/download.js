@@ -43,11 +43,11 @@ cmd(
 🎼 Let the rhythm guide you... 🎼
 🚀 Pow. By RAMESH DISSANAYAKA 🔥
 ─────────────────────────
-🎬 *Title:* ${data.title}
-⏱️ *Duration:* ${data.timestamp}
-📅 *Uploaded:* ${data.ago}
-👀 *Views:* ${data.views.toLocaleString()}
-🔗 *Watch Here:* ${data.url}
+🎬 *${video.title}*
+👤 Channel: ${video.author.name}
+⏱️ Duration: ${data.timestamp}
+👀 Views: ${video.views.toLocaleString()}
+🔗 ${video.url}
 ─────────────────────────
 🎼 Made with ❤️ by RAMESH DISSANAYAKA💫`;
 
@@ -118,11 +118,12 @@ cmd(
 📼 Let the video guide you... 📼
 🚀 Pow. By RAMESH DISSANAYAKA 🔥
 ─────────────────────────
-🎬 *Title:* ${data.title}
-⏱️ *Duration:* ${data.timestamp}
-📅 *Uploaded:* ${data.ago}
-👀 *Views:* ${data.views.toLocaleString()}
-🔗 *Watch Here:* ${data.url}
+🎬 *${video.title}*
+👤 Channel: ${video.author.name}
+⏱️ Duration: ${data.timestamp}
+📅 Uploaded: ${video.ago}
+👀 Views: ${data.views.toLocaleString()}
+🔗 ${video.url}
 ─────────────────────────
 📼 Made with ❤️ by RAMESH DISSANAYAKA💫`;
 
