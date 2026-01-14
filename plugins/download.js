@@ -64,15 +64,6 @@ cmd(
       const data = await ytmp3(video.url);
       if (!data?.url) return reply("⏳ *Sorry, ❌ Failed to download MP3");
 
-     await rush.sendMessage(
-        from,
-        {
-          audio: { url: songData.download.url },
-          mimetype: "audio/mpeg",
-        },
-        { quoted: mek }
-      );
-
       await rush.sendMessage(
         from,
         {
