@@ -94,7 +94,6 @@ cmd(
     try {
       if (!q) return reply("🎬 Send video name or YouTube link");
 
-      reply("🔎 Searching YouTube...");
       const video = await getYoutube(q);
       if (!video) return reply("❌ No results found");
 
@@ -125,7 +124,6 @@ cmd(
         { quoted: mek }
       );
 
-      reply("⬇️ Downloading video...");
 
       const data = await ytmp4(video.url, {
         format: "mp4",
