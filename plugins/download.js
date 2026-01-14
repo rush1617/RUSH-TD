@@ -111,7 +111,7 @@ cmd(
 👤 Channel: ${video.author.name}
 ⏱ Duration: ${video.timestamp}
 📅 Uploaded: ${video.ago}
-👀 Views: ${data.views.toLocaleString()}
+👀 Views: ${video.views.toLocaleString()}
 🔗 ${video.url}
 ─────────────────────────
 📼 Made with ❤️ by RAMESH DISSANAYAKA💫`;
@@ -145,6 +145,7 @@ await rush.sendMessage(
   },
   { quoted: mek }
 );
+       return reply("✅ *Thank you for using RUSH-TD! Enjoy your video* 💖");
     } catch (e) {
       console.log("YTMP4 ERROR:", e);
       reply("❌ Error while downloading video");
@@ -195,6 +196,7 @@ cmd(
         },
         { quoted: mek }
       );
+       return reply("✅ *Thank you for using RUSH-TD! Enjoy your video* 💖");
     } catch (e) {
       console.log("TIKTOK ERROR:", e);
       reply("❌ Error while downloading TikTok video");
