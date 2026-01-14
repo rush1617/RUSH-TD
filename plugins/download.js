@@ -34,8 +34,7 @@ cmd(
       const video = await getYoutube(q);
       if (!video) return reply("❌ No results found");
 
-      const caption = `
-       🌟 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 🌟    
+      const caption = `🌟 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 🌟    
 ════════════════════════     
 🔮  R U S H - T D  🔮  
       🎧 𝙎𝙊𝙉𝙂 𝘿𝙊𝙒𝙉𝙇𝙊𝘼𝘿𝙀𝙍 🎧  
@@ -110,8 +109,7 @@ cmd(
       const video = await getYoutube(q);
       if (!video) return reply("❌ No results found");
 
-      const caption =
-        `🌟 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 🌟    
+      const caption = `🌟 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 🌟    
 ════════════════════════     
 🔮  R U S H - T D  🔮  
       📼 𝗩𝗜𝗗𝗘𝗢 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗥 📼 
