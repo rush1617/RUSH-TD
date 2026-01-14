@@ -21,27 +21,38 @@ async function getYoutube(query) {
 cmd(
   {
     pattern: "ytmp3",
-    alias: ["yta", "song"],
-    desc: "Download YouTube MP3 by name or link",
+    alias: ["song"],
+    react: "🎶",
+    desc: "Download Song",
     category: "download",
     filename: __filename,
   },
-  async (bot, mek, m, { from, q, reply }) => {
+  async (rush, mek, m, { from, q, reply }) => {
     try {
-      if (!q) return reply("🎵 Send song name or YouTube link");
+      if (!q) return reply("❌ *Please Enter a song name or YouTube link*");
 
-      reply("🔎 Searching YouTube...");
       const video = await getYoutube(q);
       if (!video) return reply("❌ No results found");
 
-      const caption =
-        `🎵 *${video.title}*\n\n` +
-        `👤 Channel: ${video.author.name}\n` +
-        `⏱ Duration: ${video.timestamp}\n` +
-        `👀 Views: ${video.views.toLocaleString()}\n` +
-        `🔗 ${video.url}`;
+      const caption = `
+       🌟 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 🌟    
+════════════════════════     
+🔮  R U S H - T D  🔮  
+      🎧 𝙎𝙊𝙉𝙂 𝘿𝙊𝙒𝙉𝙇𝙊𝘼𝘿𝙀𝙍 🎧  
+════════════════════════   
 
-      await bot.sendMessage(
+🎼 Let the rhythm guide you... 🎼
+🚀 Pow. By RAMESH DISSANAYAKA 🔥
+─────────────────────────
+🎬 *Title:* ${data.title}
+⏱️ *Duration:* ${data.timestamp}
+📅 *Uploaded:* ${data.ago}
+👀 *Views:* ${data.views.toLocaleString()}
+🔗 *Watch Here:* ${data.url}
+─────────────────────────
+🎼 Made with ❤️ by RAMESH DISSANAYAKA💫`;
+
+      await rush.sendMessage(
         from,
         {
           image: { url: video.thumbnail },
@@ -50,22 +61,34 @@ cmd(
         { quoted: mek }
       );
 
-      reply("⬇️ Downloading MP3...");
 
       const data = await ytmp3(video.url);
-      if (!data?.url) return reply("❌ Failed to download MP3");
+      if (!data?.url) return reply("⏳ *Sorry, ❌ Failed to download MP3");
 
-      await bot.sendMessage(
+     await rush.sendMessage(
         from,
         {
-          audio: { url: data.url },
+          audio: { url: songData.download.url },
           mimetype: "audio/mpeg",
         },
         { quoted: mek }
       );
+
+      await rush.sendMessage(
+        from,
+        {
+          document: { url: songData.download.url },
+          mimetype: "audio/mpeg",
+          fileName: `${data.title}.mp3`,
+          caption: "🎶 *Your song is ready to be played!* ",
+        },
+        { quoted: mek }
+      );
+
+      return reply("✅ *Thank you for using RUSH-TD! Enjoy your music* 🎧💖");
     } catch (e) {
-      console.log("YTMP3 ERROR:", e);
-      reply("❌ Error while downloading MP3");
+      console.log(e);
+      reply(`❌ *Error:* ${e.message} 😞`);
     }
   }
 );
@@ -73,12 +96,13 @@ cmd(
 cmd(
   {
     pattern: "ytmp4",
-    alias: ["ytv", "video"],
-    desc: "Download YouTube MP4 by name or link",
+    alias: ["video"],
+    react: "📼",
+    desc: "Download YouTube Video",
     category: "download",
     filename: __filename,
   },
-  async (bot, mek, m, { from, q, reply }) => {
+  async (rush, mek, m, { from, q, reply }) => {
     try {
       if (!q) return reply("🎬 Send video name or YouTube link");
 
@@ -87,14 +111,24 @@ cmd(
       if (!video) return reply("❌ No results found");
 
       const caption =
-        `🎬 *${video.title}*\n\n` +
-        `👤 Channel: ${video.author.name}\n` +
-        `⏱ Duration: ${video.timestamp}\n` +
-        `👀 Views: ${video.views.toLocaleString()}\n` +
-        `📅 Uploaded: ${video.ago}\n` +
-        `🔗 ${video.url}`;
+        `🌟 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 🌟    
+════════════════════════     
+🔮  R U S H - T D  🔮  
+      📼 𝗩𝗜𝗗𝗘𝗢 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗥 📼 
+════════════════════════   
 
-      await bot.sendMessage(
+📼 Let the video guide you... 📼
+🚀 Pow. By RAMESH DISSANAYAKA 🔥
+─────────────────────────
+🎬 *Title:* ${data.title}
+⏱️ *Duration:* ${data.timestamp}
+📅 *Uploaded:* ${data.ago}
+👀 *Views:* ${data.views.toLocaleString()}
+🔗 *Watch Here:* ${data.url}
+─────────────────────────
+📼 Made with ❤️ by RAMESH DISSANAYAKA💫`;
+
+      await rush.sendMessage(
         from,
         {
           image: { url: video.thumbnail },
@@ -107,18 +141,18 @@ cmd(
 
       const data = await ytmp4(video.url, {
         format: "mp4",
-        videoQuality: "360",
+        videoQuality: "480",
       });
 
       if (!data?.url) return reply("❌ Failed to download video");
 
-await bot.sendMessage(
+await rush.sendMessage(
   from,
   {
     video: { url: data.url },
     mimetype: "video/mp4",
     fileName: data.filename || "youtube_video.mp4",
-    caption: "🎬 YouTube video",
+    caption: "📼 *Your Video is ready to be played!*",
     gifPlayback: false,
   },
   { quoted: mek }
@@ -139,7 +173,7 @@ cmd(
     category: "download",
     filename: __filename,
   },
-  async (bot, mek, m, { from, q, reply }) => {
+  async (rush, mek, m, { from, q, reply }) => {
     try {
       if (!q) return reply("📱 Send TikTok link");
 
@@ -149,12 +183,22 @@ cmd(
       if (!data?.no_watermark)
         return reply("❌ Failed to download TikTok video");
 
-      const caption =
+      const caption = `🌟 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 🌟    
+════════════════════════     
+🔮  R U S H - T D  🔮  
+      🪬 ᵗⁱᵏ ᵗᵒᵏ 𝗩𝗜𝗗𝗘𝗢 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗥 🪬 
+════════════════════════   
+
+🚀 Pow. By RAMESH DISSANAYAKA 🔥
+─────────────────────────
         `🎵 *${data.title || "TikTok Video"}*\n\n` +
         `👤 Author: ${data.author || "Unknown"}\n` +
-        `⏱ Duration: ${data.runtime}s`;
+        `⏱ Duration: ${data.runtime}s
+        
+       ` ─────────────────────────
+🪬 Made with ❤️ by RAMESH DISSANAYAKA💫`;
 
-      await bot.sendMessage(
+      await rush.sendMessage(
         from,
         {
           video: { url: data.no_watermark },
