@@ -45,7 +45,7 @@ cmd(
 ─────────────────────────
 🎬 *${video.title}*
 👤 Channel: ${video.author.name}
-⏱️ Duration: ${data.timestamp}
+⏱ Duration: ${video.timestamp}
 👀 Views: ${video.views.toLocaleString()}
 🔗 ${video.url}
 ─────────────────────────
@@ -120,7 +120,7 @@ cmd(
 ─────────────────────────
 🎬 *${video.title}*
 👤 Channel: ${video.author.name}
-⏱️ Duration: ${data.timestamp}
+⏱ Duration: ${video.timestamp}
 📅 Uploaded: ${video.ago}
 👀 Views: ${data.views.toLocaleString()}
 🔗 ${video.url}
