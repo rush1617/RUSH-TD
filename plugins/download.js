@@ -190,10 +190,10 @@ cmd(
 ════════════════════════   
 
 🚀 Pow. By RAMESH DISSANAYAKA 🔥
-─────────────────────────`
-        `🎵 *${data.title || "TikTok Video"}*\n\n` +
-        `👤 Author: ${data.author || "Unknown"}\n` +
-        `⏱ Duration: ${data.runtime}s
+─────────────────────────
+🎵 *${data.title || "TikTok Video"}*
+👤 Author: ${data.author || "Unknown"}
+⏱ Duration: ${data.runtime}
         
        ─────────────────────────
 🪬 Made with ❤️ by RAMESH DISSANAYAKA💫`;
