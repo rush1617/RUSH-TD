@@ -35,7 +35,13 @@ cmd(
 
       const selected = wallpapers.slice(0, 5); // get top 5
 
-      const header = `WALLPAPER DOWNLOADER`;
+      const header = `🌟 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 🌟    
+════════════════════════     
+🔮  R U S H - T D  🔮  
+
+🖼️ 𝗪𝗔𝗟𝗟𝗣𝗔𝗣𝗘𝗥 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗥 🖼️ 
+══════════════════  
+🖼️ Made with ❤️ by RAMESH DISSANAYAKA💫`;
 
       await conn.sendMessage(
         from,
