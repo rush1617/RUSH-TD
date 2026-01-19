@@ -27,7 +27,7 @@ cmd(
 
       await rush.sendMessage(from, {
         image: { url: imageUrl },
-        caption: menuText,
+        caption: downloadText,
       }, { quoted: mek });
 
     } catch (err) {
