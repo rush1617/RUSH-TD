@@ -14,17 +14,7 @@ cmd(
 ┃━━━━━━━━━━━━━━━━━━━━━✦
 ╰➤ 📥 *DOWNLOAD* — Type: .download
 ╰➤ 🎨 *LOGO* — Type: .logo
-╰➤ 👥 *GROUP* — Type: .group
-╰➤ 🛠️ *UTILITIES* — Type: .utilities
-╰➤ 🧰 *TOOLS* — Type: .tools
-╰➤ 🤖 *AI* — Type: .ai
-╰➤ 🔄 *CONVERT* — Type: .convert
-╰➤ 🍥 *ANIME* — Type: .anime
 ╰➤ 🔍 *SEARCH* — Type: .search
-╰➤ 🎉 *FUN* — Type: .fun
-╰➤ 🏠 *MAIN* — Type: .main
-╰➤ 👑 *OWNER* — Type: .owner
-╰➤ 📂 *OTHER* — Type: .other
 ┃━━━━━━━━━━━━━━━━━━━━━✦
 ┃ ⚙️ Made with ❤️ by
 ╰─🔥 *_RAMESH DISSANAYAKA_* 🔥
@@ -44,3 +34,4 @@ cmd(
     }
   }
 );
+
