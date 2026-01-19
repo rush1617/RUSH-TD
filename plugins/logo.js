@@ -185,7 +185,14 @@ for (const [effectName, effectInfo] of Object.entries(effects)) {
 
             await conn.sendMessage(from, {
                 image: { url: result.imageUrl },
-                caption: `✨ ${effectName.charAt(0).toUpperCase() + effectName.slice(1)}: ${text}`
+                caption: `🌟 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 🌟    
+════════════════════════     
+🔮  R U S H - T D  🔮  
+
+🎨 𝗟𝗢𝗚𝗢 𝗖𝗥𝗘𝗔𝗧𝗘𝗥 🎨
+══════════════════ 
+✨ ${effectName.charAt(0).toUpperCase() + effectName.slice(1)}: ${text}
+🎨 Made with ❤️ by RAMESH DISSANAYAKA💫`
             });
 
         } catch (e) {
