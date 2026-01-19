@@ -15,7 +15,7 @@ cmd(
     try {
       if (!q) return reply("❌ *Please provide an app name to search!*");
 
-      await test.sendMessage(from, { react: { text: "⏳", key: mek.key } });
+      await test.sendMessage(from, { react: { text: "📍", key: mek.key } });
 
       const apiUrl = `http://ws75.aptoide.com/api/7/apps/search/query=${encodeURIComponent(q)}/limit=1`;
       const { data } = await axios.get(apiUrl);
@@ -48,7 +48,7 @@ cmd(
         { quoted: mek }
       );
 
-      await test.sendMessage(from, { react: { text: "✅", key: mek.key } });
+      await test.sendMessage(from, { react: { text: "📍", key: mek.key } });
     } catch (err) {
       console.error("❌ APK Downloader Error:", err);
       reply("❌ *An error occurred while downloading the APK.*");
