@@ -156,6 +156,7 @@ cmd(
   {
     pattern: "tiktok",
     alias: ["tt"],
+    react: "🎼",
     desc: "Download TikTok video",
     category: "download",
     filename: __filename,
