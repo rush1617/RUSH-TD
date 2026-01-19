@@ -27,7 +27,13 @@ cmd(
       const app = data.datalist.list[0];
       const appSize = (app.size / 1048576).toFixed(2); 
       
-      const caption = `APK DOWNLOADER`;
+      const caption = `🌟 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 🌟    
+════════════════════════     
+🔮  R U S H - T D  🔮  
+
+🪬𝗔𝗣𝗞 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗥🪬 
+══════════════════  
+📍 Made with ❤️ by RAMESH DISSANAYAKA💫`;
 
       await test.sendMessage(
         from,
