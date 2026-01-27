@@ -114,7 +114,7 @@ async function connectToWA() {
 `│ ⚡ BOT NAME: RUSH-TD\n` +
 `│ 🔋 PLATFORM: linux\n` +
 `│ 🧩 VERSION: 1.0.0\n` +
-`╰───────────────⬣\n` +
+`╰───────────────────⬣\n` +
 `👑 O  W  N  E  R\n` +
 `🔥 RAMESH DISSANAYAKA 🔥\n`;
       rush.sendMessage(ownerNumber[0] + "@s.whatsapp.net", {
