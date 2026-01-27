@@ -106,9 +106,9 @@ async function connectToWA() {
       console.log('✅ RUSH-TD connected to WhatsApp');
 
       const up = 
-`╭─────── ⭓ ⭓ ⭓  ─────────╮\n` +
+`╭─────── ⭓ ⭓ ⭓  ────────╮\n` +
 `│         🧿 SYSTEM ONLINE 🧿        │\n` +
-`╰──────────────⟡───────╯\n` +
+`╰──────────────⟡──────╯\n` +
 `│ 👋 *Hi* there, I'm Alive Now!\n` +
 `│ 🍁 *PREFIX:* "."\n` +
 `│ ⚡ *BOT NAME:* RUSH-TD\n` +
