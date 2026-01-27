@@ -37,14 +37,17 @@ cmd(
         `🎬 *${i + 1}. ${v.title}*\n📅 ${v.ago} | ⌛ ${v.timestamp} | 👁️ ${v.views.toLocaleString()} views\n🔗 ${v.url}`
       )).join("\n\n");
 
-      const caption = `  
- 🌟 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 🌟    
-════════════════════════     
-🔮  R U S H  -  T D  🔮  
-          📍 YOUTUBE SEARCH 📍  
-════════════════════════  
-🔎 *Query*: ${q}
+      const caption =
+`╭━━━🌟𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢🌟━━━╮
+┃            ®️𝗥𝗨𝗦𝗛 -𝗧𝗗®️               ┃
+┃━━━━━━━━━━━━━━━━━━━━✦
+┃📌𝗬𝗢𝗨 𝗧𝗨𝗕𝗘 𝗦𝗘𝗔𝗥𝗖𝗛📌
+┃━━━━━━━━━━━━━━━━━━━━✦
+╰➤🔎 *Query*: ${q}
 ${formattedResults}
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥
    `;
 
       await rush.sendMessage(
