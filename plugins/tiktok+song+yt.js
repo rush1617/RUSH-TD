@@ -98,23 +98,24 @@ cmd(
       const video = await getYoutube(q);
       if (!video) return reply("❌ No results found");
 
-      const caption = `🌟 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 🌟    
-════════════════════════     
-🔮  R U S H - T D  🔮  
-      📼 𝗩𝗜𝗗𝗘𝗢 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗥 📼 
-════════════════════════   
-
-📼 Let the video guide you... 📼
-🚀 Pow. By RAMESH DISSANAYAKA 🔥
-─────────────────────────
-🎬 *${video.title}*
-👤 Channel: ${video.author.name}
-⏱ Duration: ${video.timestamp}
-📅 Uploaded: ${video.ago}
-👀 Views: ${video.views.toLocaleString()}
-🔗 ${video.url}
-─────────────────────────
-📼 Made with ❤️ by RAMESH DISSANAYAKA💫`;
+      const caption =
+`╭━━━🌟𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢🌟━━━╮
+┃            ®️𝗥𝗨𝗦𝗛 -𝗧𝗗®️               ┃
+┃━━━━━━━━━━━━━━━━━━━━✦
+┃📼𝗩𝗜𝗗𝗘𝗢 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗥📼
+┃━━━━━━━━━━━━━━━━━━━━✦
+┃📼 Let the video guide you... 📼
+┃🚀 Pow. By RAMESH DISSANAYAKA 🔥
+┃━━━━━━━━━━━━━━━━━━━━✦
+╰➤🎬 *${video.title}*
+╰➤👤 Channel: ${video.author.name}
+╰➤⏱ Duration: ${video.timestamp}
+╰➤📅 Uploaded: ${video.ago}
+╰➤👀 Views: ${video.views.toLocaleString()}
+╰➤🔗 ${video.url}
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃📼Made with ❤️ by
+╰━𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔💫`;
 
       await rush.sendMessage(
         from,
@@ -157,7 +158,7 @@ cmd(
   {
     pattern: "tiktok",
     alias: ["tt"],
-    react: "🎼",
+    react: "🎱",
     desc: "Download TikTok video",
     category: "download",
     filename: __filename,
@@ -172,21 +173,21 @@ cmd(
       if (!data?.no_watermark)
         return reply("❌ Failed to download TikTok video");
 
-      const caption = `🌟 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 🌟    
-════════════════════════     
-🔮  R U S H - T D  🔮  
-
-🪬𝗩𝗜𝗗𝗘𝗢 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘🪬 
-══════════════════  
-
-🚀 Pow. By RAMESH DISSANAYAKA 🔥
-─────────────────
-🎵 *${data.title || "TikTok Video"}*
-👤 Author: ${data.author || "Unknown"}
-⏱ Duration: ${data.runtime}
-        
-        ──────────────────
-🪬 Made with ❤️ by RAMESH DISSANAYAKA💫`;
+      const caption = 
+`╭━━━🌟𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢🌟━━━╮
+┃            ®️𝗥𝗨𝗦𝗛 -𝗧𝗗®️               ┃
+┃━━━━━━━━━━━━━━━━━━━━✦
+┃🎱𝗧𝗜𝗞𝗧𝗢𝗞 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗥🎱
+┃━━━━━━━━━━━━━━━━━━━━✦
+┃🎱Let the video guide you... 🎱
+┃🚀 Pow. By RAMESH DISSANAYAKA 🔥
+┃━━━━━━━━━━━━━━━━━━━━✦
+╰➤🎵 *${data.title || "TikTok Video"}*
+╰➤👤 Author: ${data.author || "Unknown"}
+╰➤⏱ Duration: ${data.runtime}
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🎱Made with ❤️ by
+╰━𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔💫`;
 
       await rush.sendMessage(
         from,
