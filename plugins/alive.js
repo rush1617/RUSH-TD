@@ -27,20 +27,20 @@ async (conn, mek, m, {
         const cpu = os.cpus()[0].model;
 
         const aliveCaption = 
-`╭───〔 🤖 *Bot Status* 〕───⬣/n` +
-`│/n` +
-`│ 🔹 *Bot Name:* ${config.BOT_NAME || '🔮 RUSH-TD 🔮'}/n` +
-`│ 🔹 *Status:* ✅ Online & Active/n` +
-`│ 🔹 *Ping:* ${ping} ms/n` +
-`│ 🔹 *Uptime:* ${uptime}/n` +
-`│ 🔹 *Platform:* ${platform}/n` +
-`│ 🔹 *Owner:* ${config.OWNER_NAME || 'RAMESH DISSANAYAKA'}/n` +
-`│ 🔹 *Version:* ${config.VERSION || '1.0.0'}/n` +
-`│/n` +
-`╰───────────────⬣/n` +
+`╭───〔 🤖 *Bot Status* 〕───⬣\n` +
+`│\n` +
+`│ 🔹 *Bot Name:* ${config.BOT_NAME || '🔮 RUSH-TD 🔮'}\n` +
+`│ 🔹 *Status:* ✅ Online & Active\n` +
+`│ 🔹 *Ping:* ${ping} ms\n` +
+`│ 🔹 *Uptime:* ${uptime}\n` +
+`│ 🔹 *Platform:* ${platform}\n` +
+`│ 🔹 *Owner:* ${config.OWNER_NAME || 'RAMESH DISSANAYAKA'}\n` +
+`│ 🔹 *Version:* ${config.VERSION || '1.0.0'}\n` +
+`│\n` +
+`╰───────────────⬣\n` +
 
 
-`🚀 Powered By  ${config.BOT_NAME || '*RAMESH DISSANAYAKA* 🔥/n'}
+`🚀 Powered By  ${config.BOT_NAME || '*RAMESH DISSANAYAKA* 🔥\n'}
         `.trim();
 
         return await conn.sendMessage(from, {
