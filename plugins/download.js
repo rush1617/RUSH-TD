@@ -8,19 +8,19 @@ cmd(
   },
   async (rush, mek, m, { from, reply }) => {
     try {
-      const downloadText = `
-╭━━ ⚡ *RUSH-TD*⚡ ━━╮
-┃  💠 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗 - 𝗠𝗘𝗡𝗨
-┃━━━━━━━━━━━━━━━━━━━━━✦
-╰➤🎶 *SONG* - Type: .song
-╰➤ 🎼 *TIK TOK* - Type: .tiktok
-╰➤ 📼*YOUTUBE* - Type: .video
-╰➤ 📘*FACEBOOK* - Type: .fb
-╰➤ 📍 *APK* — Type: .apk
-┃━━━━━━━━━━━━━━━━━━━━━✦
-┃  📥Made with ❤️ by
-╰─🔥 *_RAMESH DISSANAYAKA_* 🔥
-      `.trim();
+      const downloadText = 
+`╭━━━ ⚡ RUSH-TD⚡ ━━━╮\n` +
+`┃  💠 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗 - 𝗠𝗘𝗡𝗨 ┃\n` +
+`┃━━━━━━━━━━━━━━━━━✦\n` +
+`╰➤🎶 SONG - Type: .song\n` +
+`╰➤ 🎼 TIK TOK - Type: .tiktok\n` +
+`╰➤ 📼YOUTUBE - Type: .video\n` +
+`╰➤ 📘FACEBOOK - Type: .fb\n` +
+`╰➤ 📍 APK — Type: .apk\n` +
+`╭━━━━━━━━━━━━━━━━━✦\n` +
+`┃  📥Made with ❤️ by\n` +
+`╰─🔥 RAMESH DISSANAYAKA 🔥
+      \n`.trim();
 
       // Photo eke path eka / url eka denna
       const imageUrl = "https://github.com/rush1617/RUSH-TD/blob/main/images/Alive.png?raw=true"; // <-- Replace with your image URL
