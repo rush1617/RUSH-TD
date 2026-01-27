@@ -34,22 +34,23 @@ cmd(
       const video = await getYoutube(q);
       if (!video) return reply("❌ No results found");
 
-      const caption = `🌟 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 🌟    
-════════════════════════     
-🔮  R U S H - T D  🔮  
-      🎧 𝙎𝙊𝙉𝙂 𝘿𝙊𝙒𝙉𝙇𝙊𝘼𝘿𝙀𝙍 🎧  
-════════════════════════   
-
-🎼 Let the rhythm guide you... 🎼
-🚀 Pow. By RAMESH DISSANAYAKA 🔥
-─────────────────────────
-🎬 *${video.title}*
-👤 Channel: ${video.author.name}
-⏱ Duration: ${video.timestamp}
-👀 Views: ${video.views.toLocaleString()}
-🔗 ${video.url}
-─────────────────────────
-🎼 Made with ❤️ by RAMESH DISSANAYAKA💫`;
+      const caption =
+`╭━━━🌟𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢🌟━━━╮
+┃            ®️𝗥𝗨𝗦𝗛 -𝗧𝗗®️               ┃
+┃━━━━━━━━━━━━━━━━━━━━✦
+┃🎧𝗦𝗢𝗡𝗚 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗥🎧
+┃━━━━━━━━━━━━━━━━━━━━✦
+┃🎼 Let the rhythm guide you... 🎼
+┃🚀 Pow. By RAMESH DISSANAYAKA 🔥
+┃━━━━━━━━━━━━━━━━━━━━✦
+╰➤🎬 *${video.title}*
+╰➤👤 Channel: ${video.author.name}
+╰➤⏱ Duration: ${video.timestamp}
+╰➤👀 Views: ${video.views.toLocaleString()}
+╰➤🔗 ${video.url}
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🎼Made with ❤️ by
+╰━𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔💫`;
 
       await rush.sendMessage(
         from,
