@@ -60,14 +60,14 @@ cmd(
       const desc = 
         `🌟 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 🌟 \n\n` +   
        `═════════════════════ \n` +
-      `🔮  R U S H - T D  🔮 \ n`
-`✅ *FACEBOOK VIDEO DOWNLOADER* ✅  \n`
-       ` ═════════════════════   \n`
-   `🚀 Pow. By *RAMESH DISSANAYAKA* 🔥\n`
-        `──────────────────────\n`
-   `👻 *Title*: ${title || "Unknown"}\n`
-   `👻 *Quality*: ${qualityText}\n`
-        `──────────────────────\n`
+      `🔮  R U S H - T D  🔮 \ n` +
+`✅ *FACEBOOK VIDEO DOWNLOADER* ✅  \n` +
+       ` ═════════════════════   \n` +
+   `🚀 Pow. By *RAMESH DISSANAYAKA* 🔥\n` +
+        `──────────────────────\n` +
+   `👻 *Title*: ${title || "Unknown"}\n` +
+   `👻 *Quality*: ${qualityText}\n` +
+        `──────────────────────\n` +
     `🎼 Made with ❤️ by RAMESH DISSANAYAKA💫\n`;
 
       await rush.sendMessage(
