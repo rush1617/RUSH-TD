@@ -57,19 +57,19 @@ cmd(
       const bestQualityUrl = hd || sd;
       const qualityText = hd ? "HD" : "SD";
 
-      const desc = `
-          🌟 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 🌟    
-════════════════════════     
-🔮  R U S H - T D  🔮  
-      ✅ _FACEBOOK VIDEO DOWNLOADER_ ✅  
-════════════════════════   
+      const desc = 
+           `🌟 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 🌟    
+         ═════════════════════     
+          🔮  R U S H - T D  🔮  
+    ✅ *FACEBOOK VIDEO DOWNLOADER* ✅  
+         ═════════════════════   
 
-🚀 Pow. By *RAMESH DISSANAYAKA* 🔥
-─────────────────────────
-👻 *Title*: ${title || "Unknown"}
-👻 *Quality*: ${qualityText}
-─────────────────────────
-🎼 Made with ❤️ by RAMESH DISSANAYAKA💫
+    🚀 Pow. By *RAMESH DISSANAYAKA* 🔥
+        ──────────────────────
+    👻 *Title*: ${title || "Unknown"}
+    👻 *Quality*: ${qualityText}
+        ──────────────────────
+    🎼 Made with ❤️ by RAMESH DISSANAYAKA💫
 `;
 
       await rush.sendMessage(
