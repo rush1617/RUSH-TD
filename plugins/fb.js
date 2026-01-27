@@ -63,8 +63,8 @@ cmd(
 ┃━━━━━━━━━━━━━━━━━━━━✦
 ┃✅𝗙𝗔𝗖𝗘𝗕𝗢𝗢𝗞 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗥
 ┃━━━━━━━━━━━━━━━━━━━━✦
-   ╰➤👻 *Title*: ${title || "Unknown"}
-   ╰➤👻 *Quality*: ${qualityText}
+╰➤👻 *Title*: ${title || "Unknown"}
+╰➤👻 *Quality*: ${qualityText}
 ╭━━━━━━━━━━━━━━━━━━━━✦
 ┃🚀Pow. By
 ╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`;
