@@ -8,17 +8,17 @@ cmd(
   },
   async (rush, mek, m, { from, reply }) => {
     try {
-      const menuText = `
-╭━━ ⚡ *RUSH-TD*⚡ ━━╮
-┃  💠 *Ｍ Ａ Ｉ Ｎ - Ｍ Ｅ Ｎ Ｕ*
-┃━━━━━━━━━━━━━━━━━━━━━✦
-╰➤ 📥 *DOWNLOAD* — Type: .download
-╰➤ 🎨 *LOGO* — Type: .logo
-╰➤ 🔍 *SEARCH* — Type: .search
-┃━━━━━━━━━━━━━━━━━━━━━✦
-┃ ⚙️ Made with ❤️ by
-╰─🔥 *_RAMESH DISSANAYAKA_* 🔥
-      `.trim();
+      const menuText =
+`╭━━━━ ⚡ RUSH-TD⚡ ━━━━╮\n` +
+`┃    💠 Ｍ Ａ Ｉ Ｎ - Ｍ Ｅ Ｎ Ｕ    ┃\n` +
+`┃━━━━━━━━━━━━━━━━━━━✦\n` +
+`╰➤ 📥 DOWNLOAD — Type: .download\n` +
+`╰➤ 🎨 LOGO — Type: .logo\n` +
+`╰➤ 🔍 SEARCH — Type: .search\n` +
+`╭━━━━━━━━━━━━━━━━━━━✦\n` +
+`┃ ⚙️ Made with ❤️ by\n` +
+`╰─🔥 RAMESH DISSANAYAKA 🔥
+      \n`.trim();
 
       // Photo eke path eka / url eka denna
       const imageUrl = "https://github.com/rush1617/RUSH-TD/blob/main/images/main-menu.png?raw=true"; // <-- Replace with your image URL
@@ -34,4 +34,5 @@ cmd(
     }
   }
 );
+
 
