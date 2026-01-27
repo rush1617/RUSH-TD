@@ -58,17 +58,17 @@ cmd(
       const qualityText = hd ? "HD" : "SD";
 
       const desc = 
-        `🌟 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 🌟 \n\n` +   
-       `═════════════════════ \n` +
-      `🔮  R U S H - T D  🔮 \ n` +
-`✅ *FACEBOOK VIDEO DOWNLOADER* ✅  \n` +
-       ` ═════════════════════   \n` +
-   `🚀 Pow. By *RAMESH DISSANAYAKA* 🔥\n` +
-        `──────────────────────\n` +
-   `👻 *Title*: ${title || "Unknown"}\n` +
-   `👻 *Quality*: ${qualityText}\n` +
-        `──────────────────────\n` +
-    `🎼 Made with ❤️ by RAMESH DISSANAYAKA💫\n`;
+        `🌟 𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢 🌟   
+       ═════════════════════
+      🔮  R U S H - T D  🔮
+✅ *FACEBOOK VIDEO DOWNLOADER* ✅
+        ═════════════════════
+   🚀 Pow. By *RAMESH DISSANAYAKA*
+       ──────────────────────
+   👻 *Title*: ${title || "Unknown"}
+   👻 *Quality*: ${qualityText}
+        ──────────────────────
+    🎼 Made with ❤️ by RAMESH DISSANAYAKA💫`;
 
       await rush.sendMessage(
         from,
