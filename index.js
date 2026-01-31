@@ -107,16 +107,16 @@ async function connectToWA() {
 
       const up = 
 `╭─────── ⭓ ⭓ ⭓───────╮\n` +
-`│     🧿 SYSTEM ONLINE 🧿       │\n` +
+`│     🧿 *SYSTEM ONLINE* 🧿       │\n` +
 `╰─────────⟡─────────╯\n` +
-`│ 👋 Hi there, I'm Alive Now!\n` +
-`│ 🍁 PREFIX: "."\n` +
-`│ ⚡ BOT NAME: RUSH-TD\n` +
-`│ 🔋 PLATFORM: linux\n` +
-`│ 🧩 VERSION: 1.0.0\n` +
+`│ 👋 *Hi there, I'm Alive Now!*\n` +
+`│ 🍁 *PREFIX:* "."\n` +
+`│ ⚡ *BOT NAME:* RUSH-TD\n` +
+`│ 🔋 *PLATFORM:* linux\n` +
+`│ 🧩 *VERSION:* 1.0.0\n` +
 `╰───────────────────⬣\n` +
 `👑 O  W  N  E  R\n` +
-`🔥 RAMESH DISSANAYAKA 🔥\n`;
+`🔥 *RAMESH DISSANAYAKA* 🔥\n`;
       rush.sendMessage(ownerNumber[0] + "@s.whatsapp.net", {
         image: { url: 'https://raw.githubusercontent.com/rush1617/RUSH-TD/refs/heads/main/images/RUSH-TD_Alive.png' },
         caption: up
