@@ -9,15 +9,16 @@ cmd(
   async (rush, mek, m, { from, reply }) => {
     try {
       const menuText =
-`╭━━━━ ⚡ RUSH-TD⚡ ━━━━╮\n` +
-`┃    💠 Ｍ Ａ Ｉ Ｎ - Ｍ Ｅ Ｎ Ｕ    ┃\n` +
+`╭━━━━ ⚡ *RUSH-TD* ⚡ ━━━━╮\n` +
+`┃    💠 *Ｍ Ａ Ｉ Ｎ - Ｍ Ｅ Ｎ Ｕ*    ┃\n` +
 `┃━━━━━━━━━━━━━━━━━━━✦\n` +
-`╰➤ 📥 DOWNLOAD — Type: .download\n` +
-`╰➤ 🎨 LOGO — Type: .logo\n` +
-`╰➤ 🔍 SEARCH — Type: .search\n` +
+`╰➤📥 *DOWNLOAD* — Type: .download\n` +
+`╰➤🎨 *LOGO* — Type: .logo\n` +
+`╰➤🔍 *SEARCH* — Type: .search\n` +
+`╰➤👑 *OWNER* — Type: .owner\n` +
 `╭━━━━━━━━━━━━━━━━━━━✦\n` +
 `┃ ⚙️ Made with ❤️ by\n` +
-`╰─🔥 RAMESH DISSANAYAKA 🔥
+`╰─🔥 *RAMESH DISSANAYAKA* 🔥
       \n`.trim();
 
       // Photo eke path eka / url eka denna
@@ -34,6 +35,7 @@ cmd(
     }
   }
 );
+
 
 
 
