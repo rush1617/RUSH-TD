@@ -9,13 +9,13 @@ cmd(
   async (rush, mek, m, { from, reply }) => {
     try {
       const downloadText = 
-`╭───〔  👑 *RUSH-TD Owner Info*  👑 〕───⬣\n` +
+`╭─ 👑 RUSH-TD Owner Info 👑\n` +
 `│\n` +
-`│ 👤 *NAME:* RAMESH DISSANAYAKA\n` +
-`│ 🌍 Location:* Sri Lanka🇱🇰 \n` +
-`│ 📱 WhatsApp:* +94775938007 \n` +
+`│👤 NAME: RAMESH DISSANAYAKA\n` +
+`│🌍 Location: Sri Lanka🇱🇰 \n` +
+`│📱 WhatsApp: +94775938007 \n` +
 `╰───────────────⬣\n` +
-`🚀 Powered By  RAMESH DISSANAYAKA 🔥\n`.trim();
+`🚀 Powered By  RAMESH DISSANAYAKA\n` 🔥.trim();
 
       // Photo eke path eka / url eka denna
       const imageUrl = "https://github.com/rush1617/RUSH-TD/blob/main/images/Ramesh%20Dissanayaka.jpg?raw=true"; // <-- Replace with your image URL
