@@ -33,7 +33,7 @@ cmd(
         return reply("*❌ No HD wallpapers found for that keyword.*");
       }
 
-      const selected = wallpapers.slice(0, 5); // get top 5
+      const selected = wallpapers.slice(0, 3); // get top 5
 
       const header = 
 `╭━━━🌟𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢🌟━━━╮
