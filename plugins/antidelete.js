@@ -128,12 +128,12 @@ module.exports = {
 
       let caption =
 `╭──────  ⭓ ⭓ ⭓ ───────╮
-│🗑️ MESSAGE RECOVERED 🗑️     
+│🗑️ *MESSAGE RECOVERED* 🗑️     
 ╰──────────⟡────────╯
 
-│ 👤 SENDER: @${sender.split('@')[0]}
-│ 🕒 DELETED AT: ${new Date().toLocaleString()}
-│ ⚠️ RECOVERED BY: RUSH-TD
+│ 👤 *SENDER:* @${sender.split('@')[0]}
+│ 🕒 *DELETED AT:* ${new Date().toLocaleString()}
+│ ⚠️ *RECOVERED BY:* RUSH-TD
 ╰───────────────⬣
 💖 Made with passion by
 ╰🔥 𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔 🔥`;
