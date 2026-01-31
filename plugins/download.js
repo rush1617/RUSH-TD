@@ -9,17 +9,17 @@ cmd(
   async (rush, mek, m, { from, reply }) => {
     try {
       const downloadText = 
-`╭━━━ ⚡ RUSH-TD⚡ ━━━╮\n` +
+`╭━━━ ⚡ *RUSH-TD* ⚡ ━━━╮\n` +
 `┃  💠 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗 - 𝗠𝗘𝗡𝗨 ┃\n` +
 `┃━━━━━━━━━━━━━━━━━✦\n` +
-`╰➤🎶 SONG - Type: .song\n` +
-`╰➤ 🎼 TIK TOK - Type: .tiktok\n` +
-`╰➤ 📼YOUTUBE - Type: .video\n` +
-`╰➤ 📘FACEBOOK - Type: .fb\n` +
-`╰➤ 📍 APK — Type: .apk\n` +
+`╰➤🎶 *SONG* - Type: .song\n` +
+`╰➤🎼 *TIK TOK* - Type: .tiktok\n` +
+`╰➤📼 *YOUTUBE* - Type: .video\n` +
+`╰➤📘 *FACEBOOK* - Type: .fb\n` +
+`╰➤📍 *APK* — Type: .apk\n` +
 `╭━━━━━━━━━━━━━━━━━✦\n` +
 `┃  📥Made with ❤️ by\n` +
-`╰─🔥 RAMESH DISSANAYAKA 🔥
+`╰─🔥 *RAMESH DISSANAYAKA* 🔥
       \n`.trim();
 
       // Photo eke path eka / url eka denna
