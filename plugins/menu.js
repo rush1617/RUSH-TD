@@ -10,7 +10,7 @@ cmd(
     try {
       const menuText =
 `╭━━━━ ⚡ *RUSH-TD* ⚡ ━━━━╮\n` +
-`┃    💠 *Ｍ Ａ Ｉ Ｎ - Ｍ Ｅ Ｎ Ｕ*    ┃\n` +
+`┃    💠 *Ｍ Ａ Ｉ Ｎ - Ｍ Ｅ Ｎ Ｕ*     ┃\n` +
 `┃━━━━━━━━━━━━━━━━━━━✦\n` +
 `╰➤📥 *DOWNLOAD* — Type: .download\n` +
 `╰➤🎨 *LOGO* — Type: .logo\n` +
@@ -35,6 +35,7 @@ cmd(
     }
   }
 );
+
 
 
 
