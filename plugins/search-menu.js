@@ -2,8 +2,8 @@ const { cmd } = require("../command");
 
 cmd(
   {
-    pattern: "download",
-    react: "📥",
+    pattern: "search",
+    react: "🔍",
     filename: __filename,
   },
   async (rush, mek, m, { from, reply }) => {
