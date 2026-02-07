@@ -13,10 +13,11 @@ cmd(
 `┃  💠 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗 - 𝗠𝗘𝗡𝗨 ┃\n` +
 `┃━━━━━━━━━━━━━━━━━✦\n` +
 `╰➤🎶 *SONG* - Type: .song\n` +
-`╰➤🎼 *TIK TOK* - Type: .tiktok\n` +
-`╰➤📼 *YOUTUBE* - Type: .video\n` +
+`╰➤🎼 *TIK TOK* - Type: .tt\n` +
+`╰➤📼 *YOUTUBE* - Type: .yt\n` +
 `╰➤📘 *FACEBOOK* - Type: .fb\n` +
-`╰➤📍 *APK* — Type: .apk\n` +
+`╰➤📍 *APK* - Type: .apk\n` +
+`╰➤🖼️ *WALLPAPER* - Type: .wp\n` +
 `╭━━━━━━━━━━━━━━━━━✦\n` +
 `┃  📥Made with ❤️ by\n` +
 `╰─🔥 *RAMESH DISSANAYAKA* 🔥
