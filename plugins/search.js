@@ -15,7 +15,7 @@ cmd(
 `╰➤🔍 *YouTube Search* - Type: .yts\n` +
 `╭━━━━━━━━━━━━━━━━━✦\n` +
 `┃  📥Made with ❤️ by\n` +
-`╰─🔥 RAMESH DISSANAYAKA 🔥\n`.trim();
+`╰─🔥 *RAMESH DISSANAYAKA* 🔥\n`.trim();
 
       // Photo eke path eka / url eka denna
       const imageUrl = "https://github.com/rush1617/RUSH-TD/blob/main/images/Alive.png?raw=true"; // <-- Replace with your image URL
