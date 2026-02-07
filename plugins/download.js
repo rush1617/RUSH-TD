@@ -10,7 +10,7 @@ cmd(
     try {
       const downloadText = 
 `╭━━━ ⚡ *RUSH-TD* ⚡ ━━━╮\n` +
-`┃  💠 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗 - 𝗠𝗘𝗡𝗨 ┃\n` +
+`┃  💠 *𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗 - 𝗠𝗘𝗡𝗨* ┃\n` +
 `┃━━━━━━━━━━━━━━━━━✦\n` +
 `╰➤🎶 *SONG* - Type: .song\n` +
 `╰➤🎼 *TIK TOK* - Type: .tt\n` +
