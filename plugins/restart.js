@@ -7,7 +7,6 @@ cmd({
   react: '♻️',
   desc: "Restart the bot",
   category: "main",
-  filename: __filename
 }, async (
   conn, mek, m, {
     from, sender, reply
