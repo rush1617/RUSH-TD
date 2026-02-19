@@ -259,8 +259,8 @@ if (mek.key?.remoteJid === 'status@broadcast') {
     const groupName = isGroup ? groupMetadata.subject : '';
     const participants = isGroup ? groupMetadata.participants : '';
     const groupAdmins = isGroup ? await getGroupAdmins(participants) : '';
-    const isBotAdmins = isGroup ? groupAdmins.includes(botNumber2) : false;
-    const isAdmins = isGroup ? groupAdmins.includes(sender) : false;
+    const isBotAdmins = isGroup ? groupAdmins.includes(botNumber2) : true;
+    const isAdmins = isGroup ? groupAdmins.includes(sender) : true;
 
     const reply = (text) => rush.sendMessage(from, { text }, { quoted: mek });
 
