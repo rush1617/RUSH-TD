@@ -1,3 +1,4 @@
+
 const { cmd } = require("../command");
 const { getGroupAdmins } = require("../lib/functions");
 const { downloadMediaMessage } = require('@whiskeysockets/baileys');
@@ -20,10 +21,9 @@ cmd({
   desc: "Kick user from group",
   category: "group",
   filename: __filename,
-}, async (rush, mek, m, { isGroup, isAdmins, isBotAdmins, reply, participants, quoted, args }) => {
-  if (!isGroup) return reply("*This command is for groups only.*");
-  if (!isAdmins) return reply("*You must be a group admin to use this command.*");
-  if (!isBotAdmins) return reply("*I must be a group admin to execute this command.*");
+}, async (rush, mek, m, { isGroup, isAdmins, reply, participants, quoted, args }) => {
+  if (!isGroup || !isAdmins) 
+    return reply("*Group only & both you and I must be admins.*");
 
   const target = getTargetUser(mek, quoted, args);
   if (!target) return reply("*Mention or reply to a user to kick.*");
@@ -74,10 +74,9 @@ cmd({
   desc: "Set group profile picture",
   category: "group",
   filename: __filename
-}, async (rush, mek, m, { isGroup, isAdmins, isBotAdmins, reply, participants, args, quoted }) => {
+}, async (rush, mek, m, { isGroup, isAdmins, reply, participants, args, quoted }) => {
   if (!isGroup) return reply("❌ This command can only be used in groups!");
   if (!isAdmins) return reply("❌ You must be a group admin to use this command!");
-  if (!isBotAdmins) return reply("❌ I must be a group admin to change the profile picture!");
 
   if (!quoted?.message?.imageMessage) return reply("🖼️ Please reply to an image to set as the group profile photo.");
 
@@ -113,13 +112,11 @@ cmd({
     category: "group",
     filename: __filename
 },
-async (rush, mek, m, { from, isGroup, isAdmins, isBotAdmins, reply, args }) => {
+async (rush, mek, m, { from, isGroup, isAdmins, reply, args }) => {
     try {
         if (!isGroup) return reply("⚠️ This command can only be used in a group!");
 
-        if (!isAdmins) return reply("⚠️ You must be a group admin to use this command!");
-
-        if (!isBotAdmins) return reply("⚠️ I must be a group admin to add users!");
+        if (!isAdmins) return reply("⚠️ Only group admins can use this command!");
 
         if (!args[0]) return reply("⚠️ Please provide the phone number of the user to add!");
 
@@ -141,10 +138,9 @@ cmd({
   desc: "Promote user to admin",
   category: "group",
   filename: __filename,
-}, async (rush, mek, m, { isGroup, isAdmins, isBotAdmins, reply, quoted, args }) => {
-  if (!isGroup) return reply("*This command is for groups only.*");
-  if (!isAdmins) return reply("*You must be a group admin to use this command.*");
-  if (!isBotAdmins) return reply("*I must be a group admin to promote users.*");
+}, async (rush, mek, m, { isGroup, isAdmins, reply, quoted, args }) => {
+  if (!isGroup || !isAdmins) 
+    return reply("*Group only & both you and I must be admins.*");
 
   const target = getTargetUser(mek, quoted, args);
   if (!target) return reply("*Mention or reply to a user to promote.*");
@@ -159,10 +155,9 @@ cmd({
   desc: "Demote admin to member",
   category: "group",
   filename: __filename,
-}, async (rush, mek, m, { isGroup, isAdmins, isBotAdmins, reply, quoted, args }) => {
-  if (!isGroup) return reply("*This command is for groups only.*");
-  if (!isAdmins) return reply("*You must be a group admin to use this command.*");
-  if (!isBotAdmins) return reply("*I must be a group admin to demote users.*");
+}, async (rush, mek, m, { isGroup, isAdmins, reply, quoted, args }) => {
+  if (!isGroup || !isAdmins) 
+    return reply("*Group only & both you and I must be admins.*");
 
   const target = getTargetUser(mek, quoted, args);
   if (!target) return reply("*Mention or reply to a user to demote.*");
@@ -179,11 +174,10 @@ cmd({
     category: "group",
     filename: __filename
 },
-async (rush, mek, m, { from, isGroup, isAdmins, isBotAdmins, reply }) => {
+async (rush, mek, m, { from, isGroup, isAdmins, reply }) => {
     try {
         if (!isGroup) return reply("⚠️ This command can only be used in a group!");
-        if (!isAdmins) return reply("⚠️ You must be a group admin to use this command!");
-        if (!isBotAdmins) return reply("⚠️ I must be a group admin to open the group!");
+        if (!isAdmins) return reply("⚠️ This command is only for group admins!");
 
         await rush.groupSettingUpdate(from, "not_announcement");
 
@@ -202,13 +196,11 @@ cmd({
     category: "group",
     filename: __filename
 },
-async (rush, mek, m, { from, isGroup, isAdmins, isBotAdmins, reply }) => {
+async (rush, mek, m, { from, isGroup, isAdmins, reply }) => {
     try {
         if (!isGroup) return reply("⚠️ This command can only be used in a group!");
 
-        if (!isAdmins) return reply("⚠️ You must be a group admin to use this command!");
-
-        if (!isBotAdmins) return reply("⚠️ I must be a group admin to close the group!");
+        if (!isAdmins) return reply("⚠️ This command is only for group admins!");
 
         await rush.groupSettingUpdate(from, "announcement");
 
@@ -225,10 +217,9 @@ cmd({
   desc: "Reset group invite link",
   category: "group",
   filename: __filename,
-}, async (rush, mek, m, { isGroup, isAdmins, isBotAdmins, reply }) => {
-  if (!isGroup) return reply("*This command is for groups only.*");
-  if (!isAdmins) return reply("*You must be a group admin to use this command.*");
-  if (!isBotAdmins) return reply("*I must be a group admin to revoke the invite link.*");
+}, async (rush, mek, m, { isGroup, isAdmins, reply }) => {
+  if (!isGroup || !isAdmins) 
+    return reply("*Group only & both you and I must be admins.*");
 
   await rush.groupRevokeInvite(m.chat);
   return reply("*Group invite link has been reset.*");
@@ -255,10 +246,9 @@ cmd({
   desc: "Change group name",
   category: "group",
   filename: __filename,
-}, async (rush, mek, m, { isGroup, isAdmins, isBotAdmins, args, reply }) => {
-  if (!isGroup) return reply("*This command is for groups only.*");
-  if (!isAdmins) return reply("*You must be a group admin to use this command.*");
-  if (!isBotAdmins) return reply("*I must be a group admin to change the group name.*");
+}, async (rush, mek, m, { isGroup, isAdmins, args, reply }) => {
+  if (!isGroup || !isAdmins) 
+    return reply("*Group only & both you and I must be admins.*");
 
   if (!args[0]) return reply("*Give a new group name.*");
 
@@ -272,10 +262,9 @@ cmd({
   desc: "Change group description",
   category: "group",
   filename: __filename,
-}, async (rush, mek, m, { isGroup, isAdmins, isBotAdmins, args, reply }) => {
-  if (!isGroup) return reply("*This command is for groups only.*");
-  if (!isAdmins) return reply("*You must be a group admin to use this command.*");
-  if (!isBotAdmins) return reply("*I must be a group admin to change the group description.*");
+}, async (rush, mek, m, { isGroup, isAdmins, args, reply }) => {
+  if (!isGroup || !isAdmins) 
+    return reply("*Group only & both you and I must be admins.*");
 
   if (!args[0]) return reply("*Give a new group description.*");
 
