@@ -5,7 +5,7 @@ function convertToBool(text, fault = 'true') {
     return text === fault ? true : false;
 }
 module.exports = {
-  SESSION_ID: "XIF0XTQS#uUjWCECIVBzvVshRWXtOdDIdNAz-Cdp7UeHWk2iw5mA", // Put your session id here
+  SESSION_ID: "WdVnFaDL#O5eTg4vEHx4lYf_YnNZVIv0iBC74hTvZzD5cNTOBrhs", // Put your session id here
   ALIVE_IMG: "https://github.com/rush1617/RUSH-TD/blob/main/images/Alive.png?raw=true",
   ALIVE_MSG: `╔═══◉ *🟢 STATUS: ONLINE* ◉═══╗\n` +
 `║  𝙷𝚎𝚢 𝙳𝚞𝚍𝚎, 𝙸’𝚖 𝚑𝚎𝚛𝚎 𝚝𝚘 𝚑𝚎𝚕𝚙 𝚢𝚘𝚞. \n` +
