@@ -6,44 +6,47 @@ const path = require('path');
 cmd({
     pattern: "save",
     react: "💾",
-    desc: "Save replied photo or video",
+    desc: "Save a replied photo or video to owner",
     category: "main",
     filename: __filename
 },
-async (conn, mek, m, { from, quoted, reply }) => {
+async (conn, message, m, { quoted, reply }) => {
 
     try {
 
-        if (!quoted) return reply("❌ Reply to a Photo or Video and type .save");
+        if (!quoted) {
+            return reply("❌ Please *reply* to a Photo or Video and type .save");
+        }
 
         let mime = quoted.mimetype || "";
 
-        if (!mime.startsWith("image") && !mime.startsWith("video")) {
-            return reply("❌ This command only works with Photo or Video messages!");
+        if (!mime.includes("image") && !mime.includes("video")) {
+            return reply("❌ This command works *only with Photo or Video* messages!");
         }
 
+        // download the media
         let media = await quoted.download();
-
-        let filePath = path.join(__dirname, '../temp/' + Date.now());
+        let fileName = Date.now() + (mime.includes("image") ? ".jpg" : ".mp4");
+        let filePath = path.join(__dirname, '../temp/' + fileName);
 
         fs.writeFileSync(filePath, media);
 
-        let ownerJid = config.BOT_OWNER + "@s.whatsapp.net";
+        // send to bot owner
+        let ownerNumber = config.BOT_OWNER + "@s.whatsapp.net";
 
-        await conn.sendMessage(ownerJid, {
+        await conn.sendMessage(ownerNumber, {
             document: fs.readFileSync(filePath),
             mimetype: mime,
-            fileName: "RUSH_SAVE_" + Date.now(),
-            caption: "📥 *New Media Saved*\n\nFrom: " + m.pushName
+            fileName: "SAVED_" + fileName,
+            caption: `📥 Saved by: ${m.pushName || "Unknown"}`
         });
 
         fs.unlinkSync(filePath);
 
-        reply("✅ Media has been successfully saved to the owner number!");
+        reply("✅ Media saved and sent to the owner successfully!");
 
     } catch (e) {
         console.log(e);
-        reply("❌ An error occurred while saving the media!");
+        reply("❌ Failed to save media, please try again!");
     }
-
 });
