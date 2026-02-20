@@ -59,8 +59,16 @@ cmd({
   category: "group",
   filename: __filename,
 }, async (rush, mek, m, { isGroup, isAdmins, reply, participants }) => {
-  if (!isGroup) return reply(`*This command can only be used in groups.*`);
-  if (!isAdmins) return reply(`*Only group admins can use this command.*`);
+  if (!isGroup) return reply
+(`*This command can only be used in groups.*
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
+  if (!isAdmins) return reply
+(`*Only group admins can use this command.*
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 
   let validParticipants = participants.filter(p => {
     const number = p.id.split("@")[0];
@@ -68,7 +76,11 @@ cmd({
   });
 
   if (validParticipants.length === 0) {
-    return reply("*No valid phone numbers found to tag.*");
+    return reply
+(`*No valid phone numbers found to tag.*
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
   }
 
   let mentions = validParticipants.map(p => p.id);
@@ -91,18 +103,38 @@ cmd({
   category: "group",
   filename: __filename
 }, async (rush, mek, m, { isGroup, isAdmins, reply, participants, args, quoted }) => {
-  if (!isGroup) return reply("❌ This command can only be used in groups!");
-  if (!isAdmins) return reply("❌ You must be a group admin to use this command!");
+  if (!isGroup) return reply
+(`❌ This command can only be used in groups!
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
+  if (!isAdmins) return reply
+(`❌ You must be a group admin to use this command!
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 
-  if (!quoted?.message?.imageMessage) return reply("🖼️ Please reply to an image to set as the group profile photo.");
+  if (!quoted?.message?.imageMessage) return reply
+(`🖼️ Please reply to an image to set as the group profile photo.
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 
   try {
     const media = await downloadMediaMessage(quoted, 'buffer');
     await rush.updateProfilePicture(m.chat, media);
-    reply("✅ Group profile picture updated!");
+    reply
+(`✅ Group profile picture updated!
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
   } catch (e) {
     console.error("❌ Error downloading image:", e);
-    reply("⚠️ Failed to set profile picture. Ensure the image is valid and try again.");
+    reply
+(`⚠️ Failed to set profile picture. Ensure the image is valid and try again.
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
   }
 });
 
@@ -113,11 +145,19 @@ cmd({
   category: "group",
   filename: __filename,
 }, async (rush, mek, m, { isGroup, reply, participants }) => {
-  if (!isGroup) return reply("*This command is for groups only.*");
+  if (!isGroup) return reply
+(`*This command is for groups only.*
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 
   const admins = participants.filter(p => p.admin).map(p => `@${p.id.split("@")[0]}`).join("\n");
 
-  return reply(`*Group Admins:*\n${admins}`, { mentions: participants.filter(p => p.admin).map(a => a.id) });
+  return reply
+(`*Group Admins:*\n${admins}
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`, { mentions: participants.filter(p => p.admin).map(a => a.id) });
 });
 
 cmd({
@@ -130,20 +170,40 @@ cmd({
 },
 async (rush, mek, m, { from, isGroup, isAdmins, reply, args }) => {
     try {
-        if (!isGroup) return reply("⚠️ This command can only be used in a group!");
+        if (!isGroup) return reply
+(`⚠️ This command can only be used in a group!
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 
-        if (!isAdmins) return reply("⚠️ Only group admins can use this command!");
+        if (!isAdmins) return reply
+(`⚠️ Only group admins can use this command!
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 
-        if (!args[0]) return reply("⚠️ Please provide the phone number of the user to add!");
+        if (!args[0]) return reply
+(`⚠️ Please provide the phone number of the user to add!
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 
         const target = args[0].includes("@") ? args[0] : `${args[0]}@s.whatsapp.net`;
 
         await rush.groupParticipantsUpdate(from, [target], "add");
 
-        return reply(`✅ Successfully added: @${target.split('@')[0]}`);
+        return reply
+(`✅ Successfully added: @${target.split('@')[0]}
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
     } catch (e) {
         console.error("Add Error:", e);
-        reply(`❌ Failed to add the user. Error: ${e.message}`);
+        reply
+(`❌ Failed to add the user. Error: ${e.message}
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
     }
 });
 
@@ -156,13 +216,25 @@ cmd({
   filename: __filename,
 }, async (rush, mek, m, { isGroup, isAdmins, reply, quoted, args }) => {
   if (!isGroup || !isAdmins) 
-    return reply("*Group only & both you and I must be admins.*");
+    return reply
+(`*Group only & both you and I must be admins.*
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 
   const target = getTargetUser(mek, quoted, args);
-  if (!target) return reply("*Mention or reply to a user to promote.*");
+  if (!target) return reply
+(`*Mention or reply to a user to promote.*
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 
   await rush.groupParticipantsUpdate(m.chat, [target], "promote");
-  return reply(`*Promoted:* @${target.split("@")[0]}`, { mentions: [target] });
+  return reply
+(`*Promoted:* @${target.split("@")[0]}
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`, { mentions: [target] });
 });
 
 cmd({
@@ -173,13 +245,25 @@ cmd({
   filename: __filename,
 }, async (rush, mek, m, { isGroup, isAdmins, reply, quoted, args }) => {
   if (!isGroup || !isAdmins) 
-    return reply("*Group only & both you and I must be admins.*");
+    return reply
+(`*Group only & both you and I must be admins.*
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 
   const target = getTargetUser(mek, quoted, args);
-  if (!target) return reply("*Mention or reply to a user to demote.*");
+  if (!target) return reply
+(`*Mention or reply to a user to demote.*
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 
   await rush.groupParticipantsUpdate(m.chat, [target], "demote");
-  return reply(`*Demoted:* @${target.split("@")[0]}`, { mentions: [target] });
+  return reply
+(`*Demoted:* @${target.split("@")[0]}
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`, { mentions: [target] });
 });
 
 cmd({
@@ -192,15 +276,31 @@ cmd({
 },
 async (rush, mek, m, { from, isGroup, isAdmins, reply }) => {
     try {
-        if (!isGroup) return reply("⚠️ This command can only be used in a group!");
-        if (!isAdmins) return reply("⚠️ This command is only for group admins!");
+        if (!isGroup) return reply
+(`⚠️ This command can only be used in a group!
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
+        if (!isAdmins) return reply
+(`⚠️ This command is only for group admins!
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 
         await rush.groupSettingUpdate(from, "not_announcement");
 
-        return reply("✅ Group has been unmuted. Everyone can send messages now!");
+        return reply
+(`✅ Group has been unmuted. Everyone can send messages now!
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
     } catch (e) {
         console.error("Unmute Error:", e);
-        reply(`❌ Failed to unmute the group. Error: ${e.message}`);
+        reply
+(`❌ Failed to unmute the group. Error: ${e.message}
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
     }
 });
 
@@ -214,16 +314,32 @@ cmd({
 },
 async (rush, mek, m, { from, isGroup, isAdmins, reply }) => {
     try {
-        if (!isGroup) return reply("⚠️ This command can only be used in a group!");
+        if (!isGroup) return reply
+(`⚠️ This command can only be used in a group!
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 
-        if (!isAdmins) return reply("⚠️ This command is only for group admins!");
+        if (!isAdmins) return reply
+(`⚠️ This command is only for group admins!
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 
         await rush.groupSettingUpdate(from, "announcement");
 
-        return reply("✅ Group has been muted. Only admins can send messages now!");
+        return reply
+(`✅ Group has been muted. Only admins can send messages now!
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
     } catch (e) {
         console.error("Mute Error:", e);
-        reply(`❌ Failed to mute the group. Error: ${e.message}`);
+        reply
+(`❌ Failed to mute the group. Error: ${e.message}
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
     }
 });
 
@@ -235,10 +351,18 @@ cmd({
   filename: __filename,
 }, async (rush, mek, m, { isGroup, isAdmins, reply }) => {
   if (!isGroup || !isAdmins) 
-    return reply("*Group only & both you and I must be admins.*");
+    return reply
+(`*Group only & both you and I must be admins.*
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 
   await rush.groupRevokeInvite(m.chat);
-  return reply("*Group invite link has been reset.*");
+  return reply
+(`*Group invite link has been reset.*
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 });
 
 cmd({
@@ -250,10 +374,18 @@ cmd({
   filename: __filename,
 }, async (rush, mek, m, { isGroup, reply }) => {
   if (!isGroup) 
-    return reply("*Group only & I must be an admin.*");
+    return reply
+(`*Group only & I must be an admin.*
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 
   const code = await rush.groupInviteCode(m.chat);
-  return reply(`*Group Link:*\nhttps://chat.whatsapp.com/${code}`);
+  return reply
+(`*Group Link:*\nhttps://chat.whatsapp.com/${code}
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 });
 
 cmd({
@@ -264,12 +396,24 @@ cmd({
   filename: __filename,
 }, async (rush, mek, m, { isGroup, isAdmins, args, reply }) => {
   if (!isGroup || !isAdmins) 
-    return reply("*Group only & both you and I must be admins.*");
+    return reply
+(`*Group only & both you and I must be admins.*
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 
-  if (!args[0]) return reply("*Give a new group name.*");
+  if (!args[0]) return reply
+(`*Give a new group name.*
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 
   await rush.groupUpdateSubject(m.chat, args.join(" "));
-  return reply("*Group name updated.*");
+  return reply
+(`*Group name updated.*
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 });
 
 cmd({
@@ -280,12 +424,24 @@ cmd({
   filename: __filename,
 }, async (rush, mek, m, { isGroup, isAdmins, args, reply }) => {
   if (!isGroup || !isAdmins) 
-    return reply("*Group only & both you and I must be admins.*");
+    return reply
+(`*Group only & both you and I must be admins.*
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 
-  if (!args[0]) return reply("*Give a new group description.*");
+  if (!args[0]) return reply
+(`*Give a new group description.*
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 
   await rush.groupUpdateDescription(m.chat, args.join(" "));
-  return reply("*Group description updated.*");
+  return reply
+(`*Group description updated.*
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 });
 
 cmd({
@@ -296,7 +452,11 @@ cmd({
   category: "group",
   filename: __filename,
 }, async (rush, mek, m, { isGroup, reply }) => {
-  if (!isGroup) return reply("*This command is for groups only.*");
+  if (!isGroup) return reply
+(`*This command is for groups only.*
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 
   const metadata = await rush.groupMetadata(m.chat);
   const adminsCount = metadata.participants.filter(p => p.admin).length;
@@ -304,13 +464,22 @@ cmd({
   const owner = metadata.owner || metadata.participants.find(p => p.admin === 'superadmin')?.id;
   const desc = metadata.desc || "No description.";
 
-  let txt = `*👥 Group:* ${metadata.subject}\n`;
-  txt += `*🆔 ID:* ${metadata.id}\n`;
-  txt += `*🧑‍💼 Owner:* ${owner ? `@${owner.split("@")[0]}` : "Not found"}\n`;
-  txt += `*📅 Created:* ${creation}\n`;
-  txt += `*👤 Members:* ${metadata.participants.length}\n`;
-  txt += `*🛡️ Admins:* ${adminsCount}\n`;
-  txt += `*📝 Description:*\n${desc}`;
+  let txt =
+`╭━━━🌟𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢🌟━━━╮\n`;
+`┃            ®️ 𝗥𝗨𝗦𝗛 -𝗧𝗗 ®️            ┃\n`;
+`┃━━━━━━━━━━━━━━━━━━━━✦\n`;
+`┃    👥𝗚𝗥𝗢𝗨𝗣 𝗜𝗡𝗙𝗢𝗠𝗔𝗧𝗜𝗢𝗡👥\n`;
+`┃━━━━━━━━━━━━━━━━━━━━✦\n`;
+  txt += `╰➤ *👥 Group:* ${metadata.subject}\n`;
+  txt += `╰➤ *🆔 ID:* ${metadata.id}\n`;
+  txt += `╰➤ *🧑‍💼 Owner:* ${owner ? `@${owner.split("@")[0]}` : "Not found"}\n`;
+  txt += `╰➤ *📅 Created:* ${creation}\n`;
+  txt += `╰➤ *👤 Members:* ${metadata.participants.length}\n`;
+  txt += `╰➤ *🛡️ Admins:* ${adminsCount}\n`;
+  txt += `╰➤ *📝 Description:*\n${desc}`;
+`╭━━━━━━━━━━━━━━━━━━━━✦\n`;
+`┃🚀Pow. By\n`;
+`╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥\n`;
 
   return reply(txt, { mentions: owner ? [owner] : [] });
 });
