@@ -240,7 +240,7 @@ if (mek.key?.remoteJid === 'status@broadcast') {
     const m = sms(rush, mek);
     const type = getContentType(mek.message);
     const from = mek.key.remoteJid;
-    const body = type === 'conversation' ? mek.message.conversation : mek.message[type]?.text || mek.message[type]?.caption || '';
+    const body = (type === 'conversation') ? mek.message.conversation : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text : (type == 'imageMessage' && mek.message.imageMessage.caption) ? mek.message.imageMessage.caption : (type == 'videoMessage' && mek.message.videoMessage.caption) ? mek.message.videoMessage.caption : '';
     const isCmd = body.startsWith(prefix);
     const commandName = isCmd ? body.slice(prefix.length).trim().split(" ")[0].toLowerCase() : '';
     const args = body.trim().split(/ +/).slice(1);
