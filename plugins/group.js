@@ -24,7 +24,10 @@ cmd({
 }, async (rush, mek, m, { isGroup, isAdmins, reply, participants, quoted, args }) => {
   if (!isGroup || !isAdmins) 
     return reply
-("*Group only & both you and I must be admins.* 🧬 ╭━━━━━━━━━━━━━━━━━━━━✦┃🚀Pow. By╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥");
+("*Group only & both you and I must be admins.* 🧬
+ "╭━━━━━━━━━━━━━━━━━━━━✦"
+ "┃🚀Pow. By"
+ "╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥");
 
   const target = getTargetUser(mek, quoted, args);
   if (!target) return reply("*Mention or reply to a user to kick.* ⁉️");
