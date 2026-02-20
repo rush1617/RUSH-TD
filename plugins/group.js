@@ -30,14 +30,26 @@ cmd({
 ╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 
   const target = getTargetUser(mek, quoted, args);
-  if (!target) return reply("*Mention or reply to a user to kick.* ⁉️");
+  if (!target) return reply
+(`*Mention or reply to a user to kick.* ⁉️
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 
   const groupAdmins = getGroupAdmins(participants);
   if (groupAdmins.includes(target)) 
-    return reply("*I can't kick an admin.* ❎");
+    return reply
+(`*I can't kick an admin.* ❎
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
 
   await rush.groupParticipantsUpdate(m.chat, [target], "remove");
-  return reply(`✅ *Kicked:* @${target.split("@")[0]}`, { mentions: [target] });
+  return reply
+(`✅ *Kicked:* @${target.split("@")[0]}
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`, { mentions: [target] });
 });
 
 cmd({
@@ -47,8 +59,8 @@ cmd({
   category: "group",
   filename: __filename,
 }, async (rush, mek, m, { isGroup, isAdmins, reply, participants }) => {
-  if (!isGroup) return reply("*This command can only be used in groups.*");
-  if (!isAdmins) return reply("*Only group admins can use this command.*");
+  if (!isGroup) return reply(`*This command can only be used in groups.*`);
+  if (!isAdmins) return reply(`*Only group admins can use this command.*`);
 
   let validParticipants = participants.filter(p => {
     const number = p.id.split("@")[0];
