@@ -1,46 +1,52 @@
-const { downloadContentFromMessage } = require('@whiskeysockets/baileys');
+const config = require('../config');
+const { cmd } = require('../command');
+const fs = require('fs');
+const path = require('path');
 
-module.exports = {
-    pattern: 'save',
-    alias: ['getvo', 'sv'],
-    react: '💾',
-    category: 'owner',
-    desc: 'Downloads and saves View Once media',
-    async run(m, { conn }) {
-        // Checking for a quoted message
-        const q = m.quoted ? m.quoted : m;
-        
-        // Checking if the message type is View Once
-        const isViewOnce = q.mtype === 'viewOnceMessageV2' || q.mtype === 'viewOnceMessage' || q.msg?.viewOnce;
+cmd({
+    pattern: "save",
+    react: "💾",
+    desc: "Save a replied photo or video to owner",
+    category: "main",
+    filename: __filename
+},
+async (conn, message, m, { quoted, reply }) => {
 
-        if (!isViewOnce) {
-            return m.reply("Please reply to a **View Once** message.");
+    try {
+
+        if (!quoted) {
+            return reply("❌ Please *reply* to a Photo or Video and type .save");
         }
 
-        try {
-            // Identify the media type (image or video)
-            const msg = q.mtype === 'viewOnceMessageV2' ? q.message.viewOnceMessageV2.message : q.message.viewOnceMessage.message;
-            const type = Object.keys(msg)[0];
-            
-            // Downloading the media content
-            const stream = await downloadContentFromMessage(msg[type], type.replace('Message', ''));
-            let buffer = Buffer.from([]);
-            for await (const chunk of stream) {
-                buffer = Buffer.concat([buffer, chunk]);
-            }
+        let mime = quoted.mimetype || "";
 
-            // Sending the media back to the chat
-            if (/image/.test(type)) {
-                await conn.sendMessage(m.chat, { image: buffer, caption: '> Saved by RUSH-TD' }, { quoted: m });
-            } else if (/video/.test(type)) {
-                await conn.sendMessage(m.chat, { video: buffer, caption: '> Saved by RUSH-TD' }, { quoted: m });
-            }
-
-
-        } catch (e) {
-            console.error(e);
-            m.reply("Error: Failed to process the View Once media.");
-            await conn.sendMessage(m.chat, { react: { text: "❌", key: m.key } });
+        if (!mime.includes("image") && !mime.includes("video")) {
+            return reply("❌ This command works *only with Photo or Video* messages!");
         }
+
+        // download the media
+        let media = await quoted.download();
+        let fileName = Date.now() + (mime.includes("image") ? ".jpg" : ".mp4");
+        let filePath = path.join(__dirname, '../temp/' + fileName);
+
+        fs.writeFileSync(filePath, media);
+
+        // send to bot owner
+        let ownerNumber = config.BOT_OWNER + "@s.whatsapp.net";
+
+        await conn.sendMessage(ownerNumber, {
+            document: fs.readFileSync(filePath),
+            mimetype: mime,
+            fileName: "SAVED_" + fileName,
+            caption: `📥 Saved by: ${m.pushName || "Unknown"}`
+        });
+
+        fs.unlinkSync(filePath);
+
+        reply("✅ Media saved and sent to the owner successfully!");
+
+    } catch (e) {
+        console.log(e);
+        reply("❌ Failed to save media, please try again!");
     }
-};
+});
