@@ -1,48 +1,45 @@
 const { downloadContentFromMessage } = require('@whiskeysockets/baileys');
 
 module.exports = {
-    name: 'save',
+    pattern: 'save',
+    alias: ['getvo', 'sv'],
+    react: '💾',
     category: 'owner',
-    desc: 'Saves view once media',
-    async execute(m, conn) {
-        // Checking if it's a View Once message
-        const quoted = m.quoted ? m.quoted : m;
-        const viewOnce = quoted.mtype === 'viewOnceMessageV2' || quoted.mtype === 'viewOnceMessage';
+    desc: 'Downloads and saves View Once media',
+    async run(m, { conn }) {
+        // Checking for a quoted message
+        const q = m.quoted ? m.quoted : m;
+        
+        // Checking if the message type is View Once
+        const isViewOnce = q.mtype === 'viewOnceMessageV2' || q.mtype === 'viewOnceMessage' || q.msg?.viewOnce;
 
-        if (!viewOnce) {
+        if (!isViewOnce) {
             return m.reply("Please reply to a **View Once** message.");
         }
 
         try {
-            const type = Object.keys(quoted.message)[0];
-            const media = await downloadContentFromMessage(
-                quoted.message[type].message[Object.keys(quoted.message[type].message)[0]], 
-                type.replace('Message', '')
-            );
+            // Identify the media type (image or video)
+            const msg = q.mtype === 'viewOnceMessageV2' ? q.message.viewOnceMessageV2.message : q.message.viewOnceMessage.message;
+            const type = Object.keys(msg)[0];
             
+            // Downloading the media content
+            const stream = await downloadContentFromMessage(msg[type], type.replace('Message', ''));
             let buffer = Buffer.from([]);
-            for await (const chunk of media) {
+            for await (const chunk of stream) {
                 buffer = Buffer.concat([buffer, chunk]);
             }
 
-            // Sending the media back
+            // Sending the media back to the chat
             if (/image/.test(type)) {
                 await conn.sendMessage(m.chat, { image: buffer, caption: '> Saved by RUSH-TD' }, { quoted: m });
             } else if (/video/.test(type)) {
                 await conn.sendMessage(m.chat, { video: buffer, caption: '> Saved by RUSH-TD' }, { quoted: m });
             }
 
-            // Adding reaction ONLY to your command message
-            await conn.sendMessage(m.chat, { 
-                react: { 
-                    text: "💾", 
-                    key: m.key // This targets the message you sent (.save)
-                } 
-            });
 
         } catch (e) {
             console.error(e);
-            m.reply("Error: Failed to download media.");
+            m.reply("Error: Failed to process the View Once media.");
             await conn.sendMessage(m.chat, { react: { text: "❌", key: m.key } });
         }
     }
