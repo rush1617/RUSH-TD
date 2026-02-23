@@ -63,7 +63,7 @@ async (rush, mek, m, { from, reply }) => {
         await rush.sendMessage(from, messageOptions, { quoted: mek });
         await rush.sendMessage(from, { react: { text: '✅', key: mek.key } });
 
-    } catch (e) {
+      catch (e) {
         console.error("Save Command Error:", e);
         reply(`*Error:* Save කිරීමේදී දෝෂයක් සිදුවිය: ${e.message}`);
     }
