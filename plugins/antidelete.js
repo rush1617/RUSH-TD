@@ -128,7 +128,7 @@ module.exports = {
 
       let caption =
 `╭──────  ⭓ ⭓ ⭓ ───────╮
-│🗑️ *MESSAGE RECOVERED* 🗑️     
+│🗑️ *MESSAGE RECOVERED* 🗑️│     
 ╰──────────⟡────────╯
 
 │ 👤 *SENDER:* @${sender.split('@')[0]}
