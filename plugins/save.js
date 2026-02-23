@@ -1,4 +1,4 @@
-const { getContentType } = require('@adiwajshing/baileys');
+const { getContentType } = require('@whiskeysockets/baileys');
 
 const savePlugin = async (msg, { sendMessage }) => {
   if (msg.body.startsWith('.save')) {
