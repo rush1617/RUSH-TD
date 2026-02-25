@@ -99,6 +99,7 @@ cmd({
 
 cmd({
   pattern: "setpp",
+  react: "🖼️",
   desc: "Set group profile picture",
   category: "group",
   filename: __filename
