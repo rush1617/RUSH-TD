@@ -18,6 +18,7 @@ cmd(
 `╰➤👑 *OWNER* — Type: .owner\n` +
 `╰➤👥 *GROUP* — Type: .group\n` +
 `╰➤🛠️ *SYSTEM* — Type: .system\n` +
+`╰➤📂 *OTHER* — Type: .other\n` +
 `╭━━━━━━━━━━━━━━━━━━━✦\n` +
 `┃ ⚙️ Made with ❤️ by\n` +
 `╰─🔥 *RAMESH DISSANAYAKA* 🔥
@@ -37,6 +38,7 @@ cmd(
     }
   }
 );
+
 
 
 
