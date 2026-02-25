@@ -5,6 +5,7 @@ const { downloadContentFromMessage } = require("@whiskeysockets/baileys");
 cmd(
 {
     pattern: "save",
+     alias: ["save", "sv"],
     react: "💾",
     desc: "Saves View Once image or video safely.",
     category: "media",
