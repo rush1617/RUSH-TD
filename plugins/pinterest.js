@@ -5,6 +5,7 @@ const cheerio = require("cheerio");
 cmd(
   {
     pattern: "pinterest",
+     alias: ["pin", "pinterest"],
     react: "📌",
     desc: "Download images or videos from Pinterest",
     category: "download",
