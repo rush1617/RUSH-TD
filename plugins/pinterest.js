@@ -59,7 +59,7 @@ cmd(
         { quoted: mek }
       );
 
-    return reply("✅ *Thank you for using RUSH-TD! 💖");
+    return reply("✅ *Thank you for using RUSH-TD!* 💖");
     } catch (e) {
       console.error("Pinterest Download Error:", e);
       reply("❌ *An error occurred while downloading Pinterest content.*");
