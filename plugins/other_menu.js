@@ -9,7 +9,7 @@ cmd(
   async (rush, mek, m, { from, reply }) => {
     try {
       const otherText = 
-`╭━━━ ⚡ RUSH-TD ⚡ ━━━╮\n` +
+`╭━━━ ⚡ *RUSH-TD* ⚡ ━━━╮\n` +
 `┃  📂 𝗢𝗧𝗛𝗘𝗥 - 𝗠𝗘𝗡𝗨             ┃\n` +
 `┃━━━━━━━━━━━━━━━━━✦\n` +
 `╰➤💾 Saves View Once image or video safely : .sv\n` +
