@@ -18,7 +18,7 @@ cmd(
 `╰➤📘 *FACEBOOK* - Type: .fb\n` +
 `╰➤📍 *APK* - Type: .apk\n` +
 `╰➤🖼️ *WALLPAPER* - Type: .wp\n` +
-`╰➤📌 *PINTEREST* - Type: .pin
+`╰➤📌 *PINTEREST* - Type: .pin\n` +
 `╭━━━━━━━━━━━━━━━━━✦\n` +
 `┃  📥Made with ❤️ by\n` +
 `╰─🔥 *RAMESH DISSANAYAKA* 🔥
