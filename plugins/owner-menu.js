@@ -8,7 +8,7 @@ cmd(
   },
   async (rush, mek, m, { from, reply }) => {
     try {
-      const downloadText = 
+      const ownerText = 
 `╭─ 👑 *RUSH-TD Owner Info* 👑\n` +
 `│\n` +
 `│👤 *NAME:* RAMESH DISSANAYAKA\n` +
@@ -23,12 +23,12 @@ cmd(
 
       await rush.sendMessage(from, {
         image: { url: imageUrl },
-        caption: downloadText,
+        caption: ownerText,
       }, { quoted: mek });
 
     } catch (err) {
       console.error(err);
-      reply("❌ Error generating download.");
+      reply("❌ Error generating owner.");
     }
   }
 );
