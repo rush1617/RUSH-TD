@@ -135,7 +135,7 @@
    ```
 
 
-## ⚡ How to Deploy DANUWA-MD on Replit
+## ⚡ How to Deploy RUSH-TD on Replit
 
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=28&duration=3000&pause=1000&color=10B981&center=true&vCenter=true&width=600&lines=Step-by-step+deployment+guide;Install+dependencies+and+start+bot" alt="Typing SVG" />
@@ -153,7 +153,7 @@ Make sure your repository includes all required files (`index.js`, `plugins`, `a
 
 ---
 
-## 🚀 How to Deploy DANUWA-MD on GitHub (via Actions)
+## 🚀 How to Deploy RUSH-TD on GitHub (via Actions)
 
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=28&duration=3000&pause=1000&color=10B981&center=true&vCenter=true&width=600&lines=Deploy+via+workflow+YAML;Push+and+run+automatically" alt="Typing SVG" />
@@ -218,7 +218,7 @@ jobs:
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=28&duration=3000&pause=1000&color=10B981&center=true&vCenter=true&width=600&lines=Deploy+via+Railway;Easy+one+tap+deployment" alt="Typing SVG" />
 </p>
 
-You can easily deploy your own instance of DANUWA-MD on Railway with just one click.
+You can easily deploy your own instance of RUSH-TD on Railway with just one click.
 
 1. Click the "Deploy on Railway" button.
 
