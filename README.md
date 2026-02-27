@@ -263,7 +263,7 @@ RUSH-TD is designed with scalability, flexibility, and functionality in mind. He
 
 ## 🛠️ Coming Soon
 
-We’re constantly improving DANUWA-MD to bring more power to your fingertips. Here’s what’s on the roadmap:
+We’re constantly improving RUSH-TD to bring more power to your fingertips. Here’s what’s on the roadmap:
 
 | Feature               | Description |
 |------------------------|-------------|
@@ -284,11 +284,11 @@ We’re constantly improving DANUWA-MD to bring more power to your fingertips. H
 ## 👨‍💻 Developer
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=28&duration=3000&pause=1000&color=10B981&center=true&vCenter=true&width=600&lines=Danuka+Dissanayaka;Full+Stack+Developer;Creator+Of+DANUWA-MD" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=28&duration=3000&pause=1000&color=10B981&center=true&vCenter=true&width=600&lines=Danuka+Dissanayaka;Full+Stack+Developer;Creator+Of+RUSH-TD" alt="Typing SVG" />
 </p>
 
 <p align="center">
-  <img src="https://github.com/rush1617/RUSH-TD/blob/main/images/Ramesh%20Dissanayaka.jpg?raw=true" width="540" style="border-radius: 50px;" alt="Danuka Disanayaka"/>
+  <img src="https://github.com/rush1617/RUSH-TD/blob/main/images/Ramesh%20Dissanayaka.jpg?raw=true" width="540" style="border-radius: 50px;" alt="Ramesh Dissanayaka"/>
 </p>
 
 <h1 align="center" style="color:#10B981; font-weight:bold;">
