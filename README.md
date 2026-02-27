@@ -284,7 +284,7 @@ We’re constantly improving RUSH-TD to bring more power to your fingertips. Her
 ## 👨‍💻 Developer
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=28&duration=3000&pause=1000&color=10B981&center=true&vCenter=true&width=600&lines=Danuka+Dissanayaka;Full+Stack+Developer;Creator+Of+RUSH-TD" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=28&duration=3000&pause=1000&color=10B981&center=true&vCenter=true&width=600&lines=Ramesh+Dissanayaka;Full+Stack+Developer;Creator+Of+RUSH-TD" alt="Typing SVG" />
 </p>
 
 <p align="center">
