@@ -3,7 +3,7 @@ const { cmd } = require("../command");
 cmd(
   {
     pattern: "other",
-    react: "📥",
+    react: "📂",
     filename: __filename,
   },
   async (rush, mek, m, { from, reply }) => {
