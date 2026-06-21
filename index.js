@@ -176,12 +176,19 @@ if (mek.key?.remoteJid === 'status@broadcast') {
       const emojis = ['❤️', '💸', '😇', '🍂', '💥', '💯', '🔥', '💫', '💎', '💗', '🤍', '🖤', '🙌', '🙆', '🚩', '🥰', '💐', '😎', '🤎', '✅', '🧡', '🌟', '🗿', '💜', '💙', '🌝', '🖤', '💚'];
       const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
 
-      await rush.sendMessage(mek.key.participant, {
-        react: {
-          text: randomEmoji,
-          key: mek.key,
-        }
-      });
+      await rush.sendMessage(
+  'status@broadcast',
+  {
+    react: {
+      text: randomEmoji,
+      key: {
+        remoteJid: 'status@broadcast',
+        id: mek.key.id,
+        participant: mek.key.participant
+      }
+    }
+  }
+);
 
       console.log(`[✓] Reacted to status of ${mek.key.participant} with ${randomEmoji}`);
     } catch (e) {
