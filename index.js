@@ -39,7 +39,7 @@ const app = express();
 const port = process.env.PORT || 8000;
 
 const prefix = '.';
-const ownerNumber = ['94775938007'];
+const ownerNumber = ['94726892483'];
 const credsPath = path.join(__dirname, '/auth_info_baileys/creds.json');
 
 async function ensureSessionFile() {
@@ -171,24 +171,17 @@ if (mek.key?.remoteJid === 'status@broadcast') {
     }
   }
 
-  if (config.AUTO_STATUS_REACT === "true" && mek.key.participant) {
+    if (config.AUTO_STATUS_REACT === "true" && mek.key.participant) {
     try {
-      const emojis = ['❤️', '💸', '😇', '🍂', '💥', '💯', '🔥', '💫', '💎', '💗', '🤍', '🖤', '🙌', '🙆', '🚩', '🥰', '💐', '😎', '🤎', '✅', '🧡', '🌟', '🗿', '💜', '💙', '🌝', '🖤', '💚'];
+      const emojis = ['❤️', '💸', '🍂', '💥', '💯', '🔥', '💫', '💎', '💗', '🤍', '🖤', '🙌', '🙆', '🚩', '💐', '🤎', '✅', '🧡', '🌟', '🗿', '💜', '💙', '🖤,'];
       const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
-
-      await rush.sendMessage(
-  'status@broadcast',
-  {
-    react: {
-      text: randomEmoji,
-      key: {
-        remoteJid: 'status@broadcast',
-        id: mek.key.id,
-        participant: mek.key.participant
-      }
-    }
-  }
-);
+      
+      await rush.sendMessage('status@broadcast', {
+        react: {
+          text: randomEmoji,
+          key: mek.key,
+        }
+      }, { statusJidList: [mek.key.participant] });
 
       console.log(`[✓] Reacted to status of ${mek.key.participant} with ${randomEmoji}`);
     } catch (e) {
