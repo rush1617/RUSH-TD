@@ -247,7 +247,7 @@ if (mek.key?.remoteJid === 'status@broadcast') {
     const q = args.join(' ');
 
     const sender = mek.key.fromMe ? rush.user.id : (mek.key.participant || mek.key.remoteJid);
-    const senderNumber = sender.split('@')[0].split(:)[0];
+    const senderNumber = sender.split('@')[0].split(':')[0];
     const isGroup = from.endsWith('@g.us');
     const botNumber = rush.user.id.split(':')[0];
     const pushname = mek.pushName || 'Sin Nombre';
