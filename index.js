@@ -269,10 +269,10 @@ if (mek.key?.remoteJid === 'status@broadcast') {
       if (cmd) {
         
         if (!isOwner) {
-            if (config.MODE === `private`) {
+            if (config.MODE === 'private') {
               return;
             }
-            if (config.MODE === `group` && !isgroup) {
+            if (config.MODE === 'group' && !isGroup) {
               return;
             }
           }
