@@ -22,7 +22,7 @@ cmd(
       \n`.trim();
 
       // Photo eke path eka / url eka denna
-      const imageUrl = "https://github.com/rush1617/RUSH-TD/blob/main/images/main-menu.png?raw=true"; // <-- Replace with your image URL
+      const imageUrl = "https://github.com/rush1617/RUSH-TD/blob/main/images/Alive.png?raw=true"; // <-- Replace with your image URL
 
       await rush.sendMessage(from, {
         image: { url: imageUrl },
