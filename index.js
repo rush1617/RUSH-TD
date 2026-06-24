@@ -267,6 +267,16 @@ if (mek.key?.remoteJid === 'status@broadcast') {
     if (isCmd) {
       const cmd = commands.find((c) => c.pattern === commandName || (c.alias && c.alias.includes(commandName)));
       if (cmd) {
+        
+        if (!isowner) {
+            if (config.MODE === `private`) {
+              return;
+            }
+            if (config.MODE === `group` && !isgroup) {
+              return;
+            }
+          }
+        
         if (cmd.react) rush.sendMessage(from, { react: { text: cmd.react, key: mek.key } });
         try {
           cmd.function(rush, mek, m, {
