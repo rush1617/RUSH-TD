@@ -16,6 +16,7 @@ cmd(
 `╰➤👀 *ALIVE* - Type: .alive\n` +
 `╰➤🤖 *BOT* - Type: .bot\n` +
 `╰➤♻️ *RESTART* - Type: .restart\n` +
+`╰➤🎭 *CHANGE MODE* - Type: .mode\n` +
 `╭━━━━━━━━━━━━━━━━━✦\n` +
 `┃  🛠️Made with ❤️ by\n` +
 `╰─🔥 *RAMESH DISSANAYAKA* 🔥
