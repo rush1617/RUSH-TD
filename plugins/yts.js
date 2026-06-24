@@ -58,6 +58,9 @@ ${formattedResults}
         },
         { quoted: mek }
       );
+    }
+    
+      return reply("✅ *Thank you for using RUSH-TD! Enjoy* 💖");
     } catch (err) {
       console.error(err);
       reply("*An error occurred while searching YouTube.* ❌");
