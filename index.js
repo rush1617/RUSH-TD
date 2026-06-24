@@ -270,10 +270,20 @@ if (mek.key?.remoteJid === 'status@broadcast') {
         
         if (!isOwner) {
             if (config.MODE === 'private') {
-              return;
+              return reply
+(`❌ Access Denied!
+🚫 *PRIVATE MODE ACTIVATED.*
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
             }
             if (config.MODE === 'group' && !isGroup) {
-              return;
+              return reply
+(`❌ Access Denied!
+🚫 *PRIVATE MODE ACTIVATED.*
+╭━━━━━━━━━━━━━━━━━━━━✦
+┃🚀Pow. By
+╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
             }
           }
         
