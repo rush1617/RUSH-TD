@@ -46,8 +46,6 @@ cmd(
       if (!fbRegex.test(q))
         return reply("*Invalid Facebook URL! Please check and try again.* ☹️");
 
-      reply("*Downloading your video...* ❤️");
-
       const result = await getFbVideoInfo(q);
       if (!result || (!result.sd && !result.hd)) {
         return reply("*Failed to download video. Please try again later.* ☹️");
