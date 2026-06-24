@@ -92,7 +92,9 @@ async (rush, mek, m, { from, reply }) => {
 
         await rush.sendMessage(from, messageOptions, { quoted: mek });
         await rush.sendMessage(from, { react: { text: '💾', key: mek.key } });
+}
 
+    return reply("✅ *Thank you for using RUSH-TD! Enjoy* 💖");
      }  catch (e) {
         console.error("Save Command Error:", e);
         reply
