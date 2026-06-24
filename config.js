@@ -25,6 +25,6 @@ module.exports = {
   BOT_OWNER: "94775938007", // Replace your bot owner number here with 94(country code)
   AUTO_STATUS_SEEN: 'true',
   AUTO_STATUS_REACT: 'true',
+MODE: process.env.MODE || "public", //public,private,group
 
-
-    };
+};
