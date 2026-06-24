@@ -56,6 +56,9 @@ cmd(
       );
 
       await test.sendMessage(from, { react: { text: "📍", key: mek.key } });
+
+return reply("✅ *Thank you for using RUSH-TD! Enjoy* 💖");
+      
     } catch (err) {
       console.error("❌ APK Downloader Error:", err);
       reply("❌ *An error occurred while downloading the APK.*");
