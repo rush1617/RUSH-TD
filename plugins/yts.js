@@ -24,8 +24,6 @@ cmd(
     try {
       if (!q) return reply("*Please provide a search query!* 🔍");
 
-      reply("*Searching YouTube for you...* ⌛");
-
       const search = await yts(q);
 
       if (!search || !search.all || search.all.length === 0) {
