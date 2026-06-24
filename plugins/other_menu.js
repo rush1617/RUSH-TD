@@ -13,6 +13,7 @@ cmd(
 `┃  📂 𝗢𝗧𝗛𝗘𝗥 - 𝗠𝗘𝗡𝗨             ┃\n` +
 `┃━━━━━━━━━━━━━━━━━✦\n` +
 `╰➤💾 Saves View Once image or video safely : .sv\n` +
+`╰➤📸 Get the profile picture : .getdp\n` +
 `╭━━━━━━━━━━━━━━━━━✦\n` +
 `┃  📂Made with ❤️ by\n` +
 `╰─🔥 *RAMESH DISSANAYAKA* 🔥
