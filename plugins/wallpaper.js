@@ -24,8 +24,6 @@ cmd(
     try {
       if (!q) return reply("*🖼️ Please enter a keyword to search HD wallpapers!*");
 
-      reply("*🔍 Searching for HD wallpapers... Please wait a moment.*");
-
       const res = await axios.get(`https://wallhaven.cc/api/v1/search?q=${encodeURIComponent(q)}&sorting=random&resolutions=1920x1080,2560x1440,3840x2160`);
       const wallpapers = res.data.data;
 
