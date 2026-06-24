@@ -268,7 +268,7 @@ if (mek.key?.remoteJid === 'status@broadcast') {
       const cmd = commands.find((c) => c.pattern === commandName || (c.alias && c.alias.includes(commandName)));
       if (cmd) {
         
-        if (!isowner) {
+        if (!isOwner) {
             if (config.MODE === `private`) {
               return;
             }
