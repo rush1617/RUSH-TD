@@ -58,7 +58,6 @@ ${formattedResults}
         },
         { quoted: mek }
       );
-    }
     
       return reply("✅ *Thank you for using RUSH-TD! Enjoy* 💖");
     } catch (err) {
