@@ -49,13 +49,7 @@ async (rush, mek, m, { from, q, reply, isGroup, sender, mentionedJid, args }) =>
 ╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
         }
         
-        reply(
-`*🔍 Searching for ${targetJid.split('@')[0]}'s Profile Picture...*
-╭━━━━━━━━━━━━━━━━━━━━✦
-┃🚀Pow. By
-╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`);
-
-        await rush.sendMessage(from, { react: { text: "🔍", key: mek.key } });
+        await rush.sendMessage(from, { react: { text: "📸", key: mek.key } });
 
         // 2. Get Profile Picture URL
         let profilePictureUrl;
@@ -90,7 +84,7 @@ async (rush, mek, m, { from, q, reply, isGroup, sender, mentionedJid, args }) =>
             mentions: targetJid.includes('@g.us') ? [] : [targetJid]
         }, { quoted: mek });
 
-        await rush.sendMessage(from, { react: { text: '✅', key: mek.key } });
+        await rush.sendMessage(from, { react: { text: '📸', key: mek.key } });
 
     } catch (e) {
         console.error("--- GETDP ERROR ---", e);
