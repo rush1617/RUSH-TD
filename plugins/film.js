@@ -9,7 +9,7 @@ const pendingQuality = {};
 // පරණ දත්ත මැකීමට Auto Cleanup
 setInterval(() => {
     const now = Date.now();
-    const timeout = 10 * 60 * 1000; // විනාඩි 10යි
+    const timeout = 10 * 60 * 1000; 
     for (const s in pendingSearch) if (now - pendingSearch[s].timestamp > timeout) delete pendingSearch[s];
     for (const s in pendingQuality) if (now - pendingQuality[s].timestamp > timeout) delete pendingQuality[s];
 }, 5 * 60 * 1000);
@@ -21,7 +21,7 @@ commands.push({
     pattern: "cinesubz",
     alias: ["film", "movie"],
     react: "🎬",
-    desc: "Search and download movies from Cinesubz.co",
+    desc: "Search and download movies from Cinesubz",
     category: "download",
     function: async (rush, mek, m, { from, q, sender, reply }) => {
         if (!q) {
@@ -30,8 +30,13 @@ commands.push({
 
 
         try {
-            const searchUrl = `https://cinesubz.co/?s=${encodeURIComponent(q)}`;
-            const res = await axios.get(searchUrl);
+            // Domain එක .lk වලට යාවත්කාලීන කර Bot Block වීම වැළැක්වීමට User-Agent භාවිතා කර ඇත.
+            const searchUrl = `https://cinesubz.lk/?s=${encodeURIComponent(q)}`;
+            const res = await axios.get(searchUrl, {
+                headers: {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'
+                }
+            });
             const $ = cheerio.load(res.data);
 
             const searchResults = [];
@@ -41,7 +46,7 @@ commands.push({
                 const year = $(el).find('span.year').text().trim();
 
                 if (title && link) {
-                    searchResults.push({ id: i + 1, title: `${title} (${year})`, link });
+                    searchResults.push({ id: searchResults.length + 1, title: `${title} (${year})`, link });
                 }
             });
 
@@ -91,7 +96,11 @@ replyHandlers.push({
         reply(`⏳ *Fetching details for ${selected.title}...*`);
 
         try {
-            const res = await axios.get(selected.link);
+            const res = await axios.get(selected.link, {
+                headers: {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'
+                }
+            });
             const $ = cheerio.load(res.data);
 
             const title = $('div.sheader div.data h1').text().trim() || selected.title;
@@ -99,7 +108,6 @@ replyHandlers.push({
             const duration = $('div.sheader div.data div.extra span.runtime').text().trim() || 'N/A';
             const releaseDate = $('div.sheader div.data div.extra span.date').text().trim() || 'N/A';
             
-            // Download links ලබා ගැනීම
             const downloadLinks = [];
             $('div#download div.links_table table tbody tr').each((i, el) => {
                 const quality = $(el).find('td').eq(1).text().trim() || $(el).find('td').eq(0).text().trim();
@@ -111,7 +119,6 @@ replyHandlers.push({
 
             if (downloadLinks.length === 0) return reply("*No download links available for this movie!* ☹️");
 
-            // දත්ත ගබඩා කිරීම
             pendingQuality[sender] = { 
                 movie: { title, imageUrl, links: downloadLinks }, 
                 timestamp: Date.now() 
@@ -181,7 +188,6 @@ replyHandlers.push({
 ┃🚀Pow. By
 ╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`;
 
-            // Document ආකාරයෙන් ෆයිල් එක යැවීම
             await rush.sendMessage(from, {
                 document: { url: selectedLink.link },
                 mimetype: "video/mp4",
