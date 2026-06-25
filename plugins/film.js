@@ -1,221 +1,86 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
-const { commands, replyHandlers } = require('../command');
+const { commands, replyHandlers } = require("../command");
+const puppeteer = require("puppeteer");
 
 const pendingSearch = {};
 const pendingQuality = {};
 
-setInterval(() => {
-    const now = Date.now();
-    const timeout = 10 * 60 * 1000; 
-    for (const s in pendingSearch) if (now - pendingSearch[s].timestamp > timeout) delete pendingSearch[s];
-    for (const s in pendingQuality) if (now - pendingQuality[s].timestamp > timeout) delete pendingQuality[s];
-}, 5 * 60 * 1000);
+async function searchCinesubz(query) {
+  const browser = await puppeteer.launch({ headless: "new", args: ["--no-sandbox", "--disable-setuid-sandbox"] });
+  const page = await browser.newPage();
+  await page.setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36");
+  await page.goto(`https://cinesubz.co/?s=${encodeURIComponent(query)}`, { waitUntil: "domcontentloaded", timeout: 60000 });
+  
+  const results = await page.$$eval("div.result-item article", articles =>
+    articles.slice(0, 10).map((el, index) => ({
+      id: index + 1,
+      title: el.querySelector("div.title a")?.innerText.trim() || "Unknown",
+      link: el.querySelector("div.title a")?.href || ""
+    }))
+  );
+  await browser.close();
+  return results;
+}
 
-// ==========================================
-// පියවර 1: චිත්‍රපට සෙවීම (Search Command)
-// ==========================================
 commands.push({
-    pattern: "cinesubz",
-    alias: ["film", "movie"],
-    react: "🎬",
-    desc: "Search and download movies from Cinesubz.co",
-    category: "download",
-    function: async (rush, mek, m, { from, q, sender, reply }) => {
-        if (!q) {
-            return reply(`*Please provide a valid Movie name!* ❤️`);
-        }
-
-        reply("⏳ *Searching for movies on Cinesubz...*");
-
-        try {
-            // Cinesubz හි ප්‍රධාන ඩොමේන් එක භාවිතය සහ User-Agent යාවත්කාලීන කිරීම
-            const searchUrl = `https://cinesubz.co/?s=${encodeURIComponent(q)}`;
-            const res = await axios.get(searchUrl, {
-                headers: {
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-                    'Accept-Language': 'en-US,en;q=0.9'
-                }
-            });
-            const $ = cheerio.load(res.data);
-
-            // Cloudflare ආරක්ෂාව මඟින් බොට්ව අවහිර කර ඇත්දැයි පරීක්ෂා කිරීම
-            const pageTitle = $('title').text();
-            if (pageTitle.includes('Just a moment') || pageTitle.includes('Cloudflare')) {
-                return reply("⚠️ *Cloudflare Security is blocking the bot!* \n\nඔබගේ Bot Host කර ඇති Server එකේ IP එක Cinesubz අඩවියෙන් Block කර ඇත (Verification එකක් ඉල්ලනවා). මේ නිසා වෙබ් අඩවියට ඇතුළු විය නොහැක. ☹️");
-            }
-
-            const searchResults = [];
-            
-            // වඩාත් පුළුල්ව සෙවුම් ප්‍රතිඵල ලබාගැනීම
-            $('.result-item, article.item, article.post').each((i, el) => {
-                const title = $(el).find('.title a, h2 a, h3 a').text().trim() || $(el).find('img').attr('alt');
-                const link = $(el).find('.title a, h2 a, h3 a, a').attr('href');
-                
-                if (title && link && link.includes('cinesubz')) {
-                    // එකම ෆිල්ම් එක දෙවරක් ඇතුළත් වීම වැළැක්වීම
-                    if (!searchResults.some(m => m.link === link)) {
-                        searchResults.push({ id: searchResults.length + 1, title: title, link: link });
-                    }
-                }
-            });
-
-            // ප්‍රතිඵල 10කට සීමා කිරීම
-            const limitedResults = searchResults.slice(0, 10);
-
-            if (limitedResults.length === 0) return reply("*No movies found! Please check and try again.* ☹️");
-
-            // සෙවූ දත්ත තාවකාලිකව ගබඩා කිරීම
-            pendingSearch[sender] = { results: limitedResults, timestamp: Date.now() };
-
-            let textMsg = 
-`╭━━━🌟𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢🌟━━━╮
-┃            ®️ *𝗥𝗨𝗦𝗛 -𝗧𝗗* ®️               ┃
-┃━━━━━━━━━━━━━━━━━━━━✦
-┃✅ *𝗠𝗢𝗩𝗜𝗘 𝗦𝗘𝗔𝗥𝗖𝗛 𝗥𝗘𝗦𝗨𝗟𝗧𝗦*
-┃━━━━━━━━━━━━━━━━━━━━✦\n`;
-            
-            limitedResults.forEach((m) => {
-                textMsg += `╰➤👻 *${m.id}.* ${m.title}\n`;
-            });
-
-            textMsg += 
-`╭━━━━━━━━━━━━━━━━━━━━✦
-┃ℹ️ *Reply with the movie number (1 - ${limitedResults.length})*
-┃🚀Pow. By
-╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`;
-
-            await rush.sendMessage(from, { text: textMsg }, { quoted: mek });
-
-        } catch (e) {
-            console.error(e);
-            if (e.response && e.response.status === 403) {
-                reply(`⚠️ *Access Denied (403)!* \nCinesubz අඩවියෙන් ඔබගේ බොට්ව Block කර ඇත. ☹️`);
-            } else {
-                reply(`*Error:* ${e.message || e}`);
-            }
-        }
-    }
+  pattern: "cinesubz",
+  alias: ["film"],
+  react: "🎬",
+  desc: "Search movies from Cinesubz (Puppeteer)",
+  category: "download",
+  function: async (rush, mek, m, { from, q, sender, reply }) => {
+    if (!q) return reply("*Please provide a movie name!*");
+    reply("⏳ *Searching... please wait a moment (Puppeteer is active).*");
+    const results = await searchCinesubz(q);
+    if (!results.length) return reply("*No movies found!*");
+    
+    pendingSearch[sender] = { results, timestamp: Date.now() };
+    let msg = `╭━━━🌟𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢🌟━━━╮\n┃            ®️ *𝗥𝗨𝗦𝗛 -𝗧𝗗* ®️               ┃\n┃━━━━━━━━━━━━━━━━━━━━✦\n┃✅ *𝗠𝗢𝗩𝗜𝗘 𝗦𝗘𝗔𝗥𝗖𝗛 𝗥𝗘𝗦𝗨𝗟𝗧𝗦*\n┃━━━━━━━━━━━━━━━━━━━━✦\n`;
+    results.forEach(r => msg += `╰➤👻 *${r.id}.* ${r.title}\n`);
+    msg += `╭━━━━━━━━━━━━━━━━━━━━✦\n┃ℹ️ *Reply with number (1-${results.length})*\n┃🚀Pow. By\n╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`;
+    reply(msg);
+  }
 });
 
-// ==========================================
-// පියවර 2: ෆිල්ම් එක තෝරාගැනීම හා විස්තර යැවීම
-// ==========================================
 replyHandlers.push({
-    filter: (text, { sender }) => pendingSearch[sender] && !isNaN(text) && parseInt(text) > 0 && parseInt(text) <= pendingSearch[sender].results.length,
-    function: async (rush, mek, m, { body, sender, reply, from }) => {
-        await rush.sendMessage(from, { react: { text: "✅", key: mek.key } });
-        
-        const index = parseInt(body.trim()) - 1;
-        const selected = pendingSearch[sender].results[index];
-        delete pendingSearch[sender]; 
-
-        reply(`⏳ *Fetching details for ${selected.title}...*`);
-
-        try {
-            const res = await axios.get(selected.link, {
-                headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36' }
-            });
-            const $ = cheerio.load(res.data);
-
-            const title = $('div.sheader div.data h1').text().trim() || selected.title;
-            const imageUrl = $('div.sheader div.poster img').attr('src') || '';
-            const duration = $('div.sheader div.data div.extra span.runtime').text().trim() || 'N/A';
-            const releaseDate = $('div.sheader div.data div.extra span.date').text().trim() || 'N/A';
-            
-            const downloadLinks = [];
-            $('div#download div.links_table table tbody tr').each((i, el) => {
-                const quality = $(el).find('td').eq(1).text().trim() || $(el).find('td').eq(0).text().trim();
-                const link = $(el).find('td').eq(3).find('a').attr('href') || $(el).find('a.download-button').attr('href');
-                if (quality && link) {
-                    downloadLinks.push({ id: downloadLinks.length + 1, quality, link });
-                }
-            });
-
-            if (downloadLinks.length === 0) return reply("*No download links available for this movie!* ☹️");
-
-            pendingQuality[sender] = { 
-                movie: { title, imageUrl, links: downloadLinks }, 
-                timestamp: Date.now() 
-            };
-
-            let infoMsg = 
-`╭━━━🌟𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢🌟━━━╮
-┃            ®️ *𝗥𝗨𝗦𝗛 -𝗧𝗗* ®️               ┃
-┃━━━━━━━━━━━━━━━━━━━━✦
-┃✅ *𝗠𝗢𝗩𝗜𝗘 𝗗𝗘𝗧𝗔𝗜𝗟𝗦*
-┃━━━━━━━━━━━━━━━━━━━━✦
-╰➤👻 *Title:* ${title}
-╰➤👻 *Release:* ${releaseDate}
-╰➤👻 *Duration:* ${duration}
-╭━━━━━━━━━━━━━━━━━━━━✦
-┃📥 *Available Qualities:*\n`;
-
-            downloadLinks.forEach((d) => {
-                infoMsg += `┃ *${d.id}.* ${d.quality}\n`;
-            });
-
-            infoMsg += 
-`┃━━━━━━━━━━━━━━━━━━━━✦
-┃ℹ️ *Reply with the quality number (1 - ${downloadLinks.length})*
-┃🚀Pow. By
-╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`;
-
-            if (imageUrl) {
-                await rush.sendMessage(from, { image: { url: imageUrl }, caption: infoMsg }, { quoted: mek });
-            } else {
-                await rush.sendMessage(from, { text: infoMsg }, { quoted: mek });
-            }
-
-        } catch (e) {
-            console.error(e);
-            reply(`*Error:* Failed to fetch movie details. ☹️`);
-        }
-    }
+  filter: (text, { sender }) => pendingSearch[sender] && !isNaN(text),
+  function: async (rush, mek, m, { body, sender, reply, from }) => {
+    const idx = parseInt(body) - 1;
+    const item = pendingSearch[sender].results[idx];
+    if (!item) return;
+    delete pendingSearch[sender];
+    
+    reply("⏳ *Fetching download links...*");
+    const browser = await puppeteer.launch({ headless: "new", args: ["--no-sandbox"] });
+    const page = await browser.newPage();
+    await page.goto(item.link, { waitUntil: "domcontentloaded" });
+    
+    const data = await page.evaluate(() => {
+      const title = document.querySelector("h1")?.innerText;
+      const links = Array.from(document.querySelectorAll("div.links_table table tr")).map(tr => ({
+        quality: tr.querySelector("td")?.innerText.trim(),
+        link: tr.querySelector("a")?.href
+      })).filter(l => l.link);
+      return { title, links };
+    });
+    await browser.close();
+    
+    pendingQuality[sender] = { movie: data, timestamp: Date.now() };
+    let msg = `╭━━━🌟𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢🌟━━━╮\n┃✅ *${data.title}*\n┃━━━━━━━━━━━━━━━━━━━━✦\n`;
+    data.links.forEach((l, i) => msg += `┃ *${i+1}.* ${l.quality}\n`);
+    msg += `┃━━━━━━━━━━━━━━━━━━━━✦\n┃ℹ️ *Reply quality number*\n╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`;
+    reply(msg);
+  }
 });
 
-// ==========================================
-// පියවර 3: Quality තෝරාගෙන Download කිරීම
-// ==========================================
 replyHandlers.push({
-    filter: (text, { sender }) => pendingQuality[sender] && !isNaN(text) && parseInt(text) > 0 && parseInt(text) <= pendingQuality[sender].movie.links.length,
-    function: async (rush, mek, m, { body, sender, reply, from }) => {
-        await rush.sendMessage(from, { react: { text: "⬇️", key: mek.key } });
-        
-        const index = parseInt(body.trim()) - 1;
-        const { movie } = pendingQuality[sender];
-        const selectedLink = movie.links[index];
-        
-        delete pendingQuality[sender]; 
-
-        reply(`*📥 Sending ${movie.title} (${selectedLink.quality})...*\nPlease wait, this may take a few minutes.`);
-
-        try {
-            const captionDesc = 
-`╭━━━🌟𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢🌟━━━╮
-┃            ®️ *𝗥𝗨𝗦𝗛 -𝗧𝗗* ®️               ┃
-┃━━━━━━━━━━━━━━━━━━━━✦
-┃✅ *𝗠𝗢𝗩𝗜𝗘 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗𝗘𝗥*
-┃━━━━━━━━━━━━━━━━━━━━✦
-╰➤👻 *Title:* ${movie.title}
-╰➤👻 *Quality:* ${selectedLink.quality}
-╭━━━━━━━━━━━━━━━━━━━━✦
-┃🚀Pow. By
-╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`;
-
-            await rush.sendMessage(from, {
-                document: { url: selectedLink.link },
-                mimetype: "video/mp4",
-                fileName: `RUSH-TD_${movie.title}_${selectedLink.quality}.mp4`.replace(/[^\w\s.-]/gi, ''),
-                caption: captionDesc
-            }, { quoted: mek });
-            
-            await rush.sendMessage(from, { react: { text: "✅", key: mek.key } });
-            return reply("✅ *Thank you for using RUSH - TD!* 💖");
-
-        } catch (error) {
-            console.error("[DOWNLOAD ERROR]", error);
-            reply(`*Error:* Failed to send the movie. ☹️`);
-        }
-    }
+  filter: (text, { sender }) => pendingQuality[sender] && !isNaN(text),
+  function: async (rush, mek, m, { body, sender, reply, from }) => {
+    const idx = parseInt(body) - 1;
+    const link = pendingQuality[sender].movie.links[idx].link;
+    const title = pendingQuality[sender].movie.title;
+    delete pendingQuality[sender];
+    
+    reply(`*📥 Sending ${title}...*\nPlease wait.`);
+    await rush.sendMessage(from, { document: { url: link }, mimetype: "video/mp4", fileName: `${title}.mp4`, caption: `*RUSH - TD Downloader*\n\n🚀 Powered By 𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔` }, { quoted: mek });
+  }
 });
