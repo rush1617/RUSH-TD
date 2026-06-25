@@ -320,7 +320,7 @@ if (mek.key?.remoteJid === 'status@broadcast') {
 
   rush.ev.on('messages.update', async (updates) => {
     if (config.MODE === 'private') {
-      updates = updates.filter(u => !u.key?.remotejid?.endsWith('@g.us'));
+      updates = updates.filter(u => !u.key?.remoteJid?.endsWith('@g.us'));
     }
 
     if (updates.length === 0) return;
