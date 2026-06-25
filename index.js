@@ -270,6 +270,7 @@ if (mek.key?.remoteJid === 'status@broadcast') {
         
         if (!isOwner) {
             if (config.MODE === 'private') {
+              if (isGroup) return;
               return reply
 (`❌ Access Denied!
 🚫 *PRIVATE MODE ACTIVATED.*
@@ -318,6 +319,12 @@ if (mek.key?.remoteJid === 'status@broadcast') {
 
 
   rush.ev.on('messages.update', async (updates) => {
+    if (config.MODE === 'private') {
+      updates = updates.filter(u => !u.key?.remotejid?.endsWith('@g.us'));
+    }
+
+    if (updates.length === 0) return;
+    
     if (global.pluginHooks) {
       for (const plugin of global.pluginHooks) {
         if (plugin.onDelete) {
