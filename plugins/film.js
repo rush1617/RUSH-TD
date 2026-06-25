@@ -2,11 +2,9 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const { commands, replyHandlers } = require('../command');
 
-// තාවකාලිකව දත්ත ගබඩා කර තබා ගන්නා Objects
 const pendingSearch = {};
 const pendingQuality = {};
 
-// පරණ දත්ත මැකීමට Auto Cleanup
 setInterval(() => {
     const now = Date.now();
     const timeout = 10 * 60 * 1000; 
@@ -21,39 +19,54 @@ commands.push({
     pattern: "cinesubz",
     alias: ["film", "movie"],
     react: "🎬",
-    desc: "Search and download movies from Cinesubz",
+    desc: "Search and download movies from Cinesubz.co",
     category: "download",
     function: async (rush, mek, m, { from, q, sender, reply }) => {
         if (!q) {
             return reply(`*Please provide a valid Movie name!* ❤️`);
         }
 
+        reply("⏳ *Searching for movies on Cinesubz...*");
 
         try {
-            // Domain එක .lk වලට යාවත්කාලීන කර Bot Block වීම වැළැක්වීමට User-Agent භාවිතා කර ඇත.
-            const searchUrl = `https://cinesubz.lk/?s=${encodeURIComponent(q)}`;
+            // Cinesubz හි ප්‍රධාන ඩොමේන් එක භාවිතය සහ User-Agent යාවත්කාලීන කිරීම
+            const searchUrl = `https://cinesubz.co/?s=${encodeURIComponent(q)}`;
             const res = await axios.get(searchUrl, {
                 headers: {
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                    'Accept-Language': 'en-US,en;q=0.9'
                 }
             });
             const $ = cheerio.load(res.data);
 
-            const searchResults = [];
-            $('div.result-item article').slice(0, 10).each((i, el) => {
-                const title = $(el).find('div.title a').text().trim();
-                const link = $(el).find('div.title a').attr('href');
-                const year = $(el).find('span.year').text().trim();
+            // Cloudflare ආරක්ෂාව මඟින් බොට්ව අවහිර කර ඇත්දැයි පරීක්ෂා කිරීම
+            const pageTitle = $('title').text();
+            if (pageTitle.includes('Just a moment') || pageTitle.includes('Cloudflare')) {
+                return reply("⚠️ *Cloudflare Security is blocking the bot!* \n\nඔබගේ Bot Host කර ඇති Server එකේ IP එක Cinesubz අඩවියෙන් Block කර ඇත (Verification එකක් ඉල්ලනවා). මේ නිසා වෙබ් අඩවියට ඇතුළු විය නොහැක. ☹️");
+            }
 
-                if (title && link) {
-                    searchResults.push({ id: searchResults.length + 1, title: `${title} (${year})`, link });
+            const searchResults = [];
+            
+            // වඩාත් පුළුල්ව සෙවුම් ප්‍රතිඵල ලබාගැනීම
+            $('.result-item, article.item, article.post').each((i, el) => {
+                const title = $(el).find('.title a, h2 a, h3 a').text().trim() || $(el).find('img').attr('alt');
+                const link = $(el).find('.title a, h2 a, h3 a, a').attr('href');
+                
+                if (title && link && link.includes('cinesubz')) {
+                    // එකම ෆිල්ම් එක දෙවරක් ඇතුළත් වීම වැළැක්වීම
+                    if (!searchResults.some(m => m.link === link)) {
+                        searchResults.push({ id: searchResults.length + 1, title: title, link: link });
+                    }
                 }
             });
 
-            if (searchResults.length === 0) return reply("*No movies found! Please check and try again.* ☹️");
+            // ප්‍රතිඵල 10කට සීමා කිරීම
+            const limitedResults = searchResults.slice(0, 10);
+
+            if (limitedResults.length === 0) return reply("*No movies found! Please check and try again.* ☹️");
 
             // සෙවූ දත්ත තාවකාලිකව ගබඩා කිරීම
-            pendingSearch[sender] = { results: searchResults, timestamp: Date.now() };
+            pendingSearch[sender] = { results: limitedResults, timestamp: Date.now() };
 
             let textMsg = 
 `╭━━━🌟𝗪𝗘𝗟𝗖𝗢𝗠𝗘 𝗧𝗢🌟━━━╮
@@ -62,13 +75,13 @@ commands.push({
 ┃✅ *𝗠𝗢𝗩𝗜𝗘 𝗦𝗘𝗔𝗥𝗖𝗛 𝗥𝗘𝗦𝗨𝗟𝗧𝗦*
 ┃━━━━━━━━━━━━━━━━━━━━✦\n`;
             
-            searchResults.forEach((m) => {
+            limitedResults.forEach((m) => {
                 textMsg += `╰➤👻 *${m.id}.* ${m.title}\n`;
             });
 
             textMsg += 
 `╭━━━━━━━━━━━━━━━━━━━━✦
-┃ℹ️ *Reply with the movie number (1 - ${searchResults.length})*
+┃ℹ️ *Reply with the movie number (1 - ${limitedResults.length})*
 ┃🚀Pow. By
 ╰━🔥𝗥𝗔𝗠𝗘𝗦𝗛 𝗗𝗜𝗦𝗦𝗔𝗡𝗔𝗬𝗔𝗞𝗔🔥`;
 
@@ -76,7 +89,11 @@ commands.push({
 
         } catch (e) {
             console.error(e);
-            reply(`*Error:* ${e.message || e}`);
+            if (e.response && e.response.status === 403) {
+                reply(`⚠️ *Access Denied (403)!* \nCinesubz අඩවියෙන් ඔබගේ බොට්ව Block කර ඇත. ☹️`);
+            } else {
+                reply(`*Error:* ${e.message || e}`);
+            }
         }
     }
 });
@@ -87,7 +104,7 @@ commands.push({
 replyHandlers.push({
     filter: (text, { sender }) => pendingSearch[sender] && !isNaN(text) && parseInt(text) > 0 && parseInt(text) <= pendingSearch[sender].results.length,
     function: async (rush, mek, m, { body, sender, reply, from }) => {
-        await rush.sendMessage(from, { react: { text: "🎬", key: mek.key } });
+        await rush.sendMessage(from, { react: { text: "✅", key: mek.key } });
         
         const index = parseInt(body.trim()) - 1;
         const selected = pendingSearch[sender].results[index];
@@ -97,9 +114,7 @@ replyHandlers.push({
 
         try {
             const res = await axios.get(selected.link, {
-                headers: {
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'
-                }
+                headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36' }
             });
             const $ = cheerio.load(res.data);
 
