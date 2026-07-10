@@ -167,7 +167,6 @@ cmd(
     try {
       if (!q) return reply("📱 Send TikTok link");
 
-      reply("⬇️ Downloading TikTok video...");
 
       const data = await tiktok(q);
       if (!data?.no_watermark)
