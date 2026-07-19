@@ -36,7 +36,6 @@ const { File } = require('megajs');
 const { commands, replyHandlers } = require('./command');
 
 const app = express();
-app.use(express.json());
 const port = process.env.PORT || 8000;
 
 const prefix = '.';
@@ -340,51 +339,9 @@ if (mek.key?.remoteJid === 'status@broadcast') {
   });
 }
 
-// 🌐 වෙබ් අඩවියෙන් එවන අලුත් සෙෂන් එක සහ නම්බර් එක බාරගන්නා Endpoint එක
-app.post("/update-session", (req, res) => {
-  const { token, sessionId, phoneNumber } = req.body;
 
-  // ආරක්ෂාව තහවුරු කර ගැනීම
-  if (token !== "RUSH_TD_SECRET_123") {
-    return res.status(403).send("Unauthorized Request!");
-  }
 
-  if (!sessionId || !phoneNumber) {
-    return res.status(400).send("Session ID or Phone Number is missing!");
-  }
-
-  try {
-    const configPath = path.join(__dirname, 'config.js');
-    let configContent = fs.readFileSync(configPath, 'utf8');
-
-    // 1. config.js එකේ SESSION_ID එක replace කරනවා
-    configContent = configContent.replace(/SESSION_ID:\s*['"`].*?['"`]/, `SESSION_ID: "${sessionId}"`);
-    
-    // 2. config.js එකේ BOT_OWNER නම්බර් එකත් replace කරනවා
-    configContent = configContent.replace(/BOT_OWNER:\s*['"`].*?['"`]/, `BOT_OWNER: "${phoneNumber}"`);
-
-    fs.writeFileSync(configPath, configContent, 'utf8');
-    console.log("♻️ [RUSH-TD] config.js updated with new Session ID & Bot Owner!");
-
-    // පැරණි සෙෂන් ෆයිල් එක මකනවා (එතකොට රීස්ටාර්ට් වුණාම අලුත් එක මෙගා එකෙන් බාගන්නවා)
-    if (fs.existsSync(credsPath)) {
-      fs.unlinkSync(credsPath);
-      console.log("🧹 Old creds.json removed.");
-    }
-
-    res.status(200).send("Session and Owner updated! Restarting bot...");
-
-    // Render එකට බොට්ව auto-restart කරන්න සර්වර් එක නවත්වනවා
-    setTimeout(() => {
-      console.log("🛑 Restarting server to apply changes...");
-      process.exit(1);
-    }, 3000);
-
-  } catch (error) {
-    console.error("❌ Webhook configuration error:", error);
-    res.status(500).send("Internal Server Error");
-  }
-});
+ensureSessionFile();
 
 app.get("/", (req, res) => {
   res.send("Hey, RUSH-TD started✅");
